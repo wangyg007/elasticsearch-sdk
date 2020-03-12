@@ -20,6 +20,7 @@
         <elasticsearch.version>7.6.0</elasticsearch.version>
     </properties>
 
+    <!-- 解决跟org.springframework.boot内置elasticsearch版本冲突 -->
     <dependencyManagement>
         <dependencies>
             <dependency>

@@ -54,7 +54,7 @@ public class DemoApplicationTests {
             doc.setData(log);
             list.add(doc);
         }
-        baseElasticDao.insertBatch("request_log_index",list);
+        baseElasticDao.insertBatch("request_log_oks",list);
 
     }
 

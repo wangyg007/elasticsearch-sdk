@@ -26,6 +26,8 @@ import java.util.List;
  * @author wangyg
  * @time 11:23
  * @note
+ * Elasticsearch(ES)有两种连接方式：transport、rest。transport通过TCP方式访问ES(只支持java),rest方式通过http API 访问ES(没有语言限制)。
+ * ES官方建议使用rest方式, transport 在7.0版本中不建议使用，在8.X的版本中废弃。
  **/
 @Repository
 public class BaseElasticDao {
