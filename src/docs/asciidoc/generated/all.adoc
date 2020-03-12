@@ -1,0 +1,4590 @@
+= 数据中台大数据
+
+
+[[_overview]]
+== 概览
+数据中台大数据接口
+
+
+=== 版本信息
+[%hardbreaks]
+__版本__ : 1.0
+
+
+=== 联系方式
+[%hardbreaks]
+__名字__ : 刘光佑
+__邮箱__ : liuguangyou@shenzhenpoly.com
+
+
+=== 许可信息
+[%hardbreaks]
+__许可证__ : Apache License, Version 2.0
+__许可网址__ : https://www.apache.org/licenses/LICENSE-2.0.html
+__服务条款__ : null
+
+
+=== URI scheme
+[%hardbreaks]
+__域名__ : localhost:8585
+__基础路径__ : /data-center
+
+
+=== 标签
+
+* park-info-controller : Park Info Controller
+* 人群AI : Throng AI Controller
+* 停车出入情况 : Park Inout H Month Controller
+* 告警分析接口 : Alarm Analysis Controller
+* 定时任务接口 : Scheduler Task Test Controller
+* 异常抬杆 : Park Hand Uprod Day Controller
+* 收费情况 : Park Total Revenue Controller
+* 财务AI分析、运营状况接口 : Zj Caiwu Income Controller
+* 车位使用率 : Park Space Month Controller
+* 项目基础数据 : Park Basic Data Controller
+
+
+
+
+[[_paths]]
+== 路径
+
+[[_getalarmanalysislistusingpost]]
+=== 查询告警分析结果
+....
+POST /alarmAnalysis/getAlarmAnalysisList
+....
+
+
+==== 参数
+
+[options="header", cols=".^2,.^3,.^9,.^4"]
+|===
+|类型|名称|说明|类型
+|**Body**|**alarmAnalysisRo** +
+__必填__|alarmAnalysisRo|<<_560f05821c60f2edc4b853c5379a4de5,告警分析请求RO>>
+|===
+
+
+==== 响应
+
+[options="header", cols=".^2,.^14,.^4"]
+|===
+|HTTP代码|说明|类型
+|**200**|OK|<<_8c9a2a035b077f4ca0aff373c9223aa8,DataResult«List«AlarmAnalysis»»>>
+|**201**|Created|无内容
+|**401**|Unauthorized|无内容
+|**403**|Forbidden|无内容
+|**404**|Not Found|无内容
+|===
+
+
+==== 消耗
+
+* `application/json`
+
+
+==== 生成
+
+* `*/*`
+
+
+==== 标签
+
+* 告警分析接口
+
+
+==== HTTP请求示例
+
+===== 请求 path
+----
+/alarmAnalysis/getAlarmAnalysisList
+----
+
+
+===== 请求 body
+[source,json]
+----
+{
+  "managerId" : "string",
+  "month" : "string",
+  "parkId" : "string"
+}
+----
+
+
+==== HTTP响应示例
+
+===== 响应 200
+[source,json]
+----
+{
+  "data" : [ {
+    "information" : "string",
+    "priority" : "string",
+    "state" : "string",
+    "type" : "string"
+  } ],
+  "info" : "string",
+  "message" : "string",
+  "status" : 0
+}
+----
+
+
+[[_getalarmanalysismffxjeusingpost]]
+=== 指标分析 （免费金额过高）
+....
+POST /alarmAnalysis/getAlarmAnalysisMFFXJE
+....
+
+
+==== 参数
+
+[options="header", cols=".^2,.^3,.^9,.^4"]
+|===
+|类型|名称|说明|类型
+|**Body**|**alarmAnalysisDto** +
+__必填__|alarmAnalysisDto|<<_db2abf4799fb22dc0a612d97cd6ec993,告警分析Dto>>
+|===
+
+
+==== 响应
+
+[options="header", cols=".^2,.^14,.^4"]
+|===
+|HTTP代码|说明|类型
+|**200**|OK|<<_769471541b3b320428f744d146173937,DataResult«List«指标分析Vo»»>>
+|**201**|Created|无内容
+|**401**|Unauthorized|无内容
+|**403**|Forbidden|无内容
+|**404**|Not Found|无内容
+|===
+
+
+==== 消耗
+
+* `application/json`
+
+
+==== 生成
+
+* `*/*`
+
+
+==== 标签
+
+* 告警分析接口
+
+
+==== HTTP请求示例
+
+===== 请求 path
+----
+/alarmAnalysis/getAlarmAnalysisMFFXJE
+----
+
+
+===== 请求 body
+[source,json]
+----
+{
+  "parkIds" : [ "string" ]
+}
+----
+
+
+==== HTTP响应示例
+
+===== 响应 200
+[source,json]
+----
+{
+  "data" : [ {
+    "parkId" : "20170501165550463642067547810861",
+    "parkName" : "国人通信大厦",
+    "type" : "1",
+    "value" : 1.0,
+    "threshold" : "1"
+  } ],
+  "info" : "string",
+  "message" : "string",
+  "status" : 0
+}
+----
+
+
+[[_getalarmanalysismessageusingpost]]
+=== 首页停车场预警分析(首頁)
+....
+POST /alarmAnalysis/getAlarmAnalysisMessage
+....
+
+
+==== 参数
+
+[options="header", cols=".^2,.^3,.^9,.^4"]
+|===
+|类型|名称|说明|类型
+|**Body**|**alarmAnalysisRo** +
+__必填__|alarmAnalysisRo|<<_560f05821c60f2edc4b853c5379a4de5,告警分析请求RO>>
+|===
+
+
+==== 响应
+
+[options="header", cols=".^2,.^14,.^4"]
+|===
+|HTTP代码|说明|类型
+|**200**|OK|<<_8c9a2a035b077f4ca0aff373c9223aa8,DataResult«List«AlarmAnalysis»»>>
+|**201**|Created|无内容
+|**401**|Unauthorized|无内容
+|**403**|Forbidden|无内容
+|**404**|Not Found|无内容
+|===
+
+
+==== 消耗
+
+* `application/json`
+
+
+==== 生成
+
+* `*/*`
+
+
+==== 标签
+
+* 告警分析接口
+
+
+==== HTTP请求示例
+
+===== 请求 path
+----
+/alarmAnalysis/getAlarmAnalysisMessage
+----
+
+
+===== 请求 body
+[source,json]
+----
+{
+  "managerId" : "string",
+  "month" : "string",
+  "parkId" : "string"
+}
+----
+
+
+==== HTTP响应示例
+
+===== 响应 200
+[source,json]
+----
+{
+  "data" : [ {
+    "information" : "string",
+    "priority" : "string",
+    "state" : "string",
+    "type" : "string"
+  } ],
+  "info" : "string",
+  "message" : "string",
+  "status" : 0
+}
+----
+
+
+[[_getalarmanalysismessagebyparkidsusingpost]]
+=== 指标分析 （首页）
+....
+POST /alarmAnalysis/getAlarmAnalysisMessageByParkIds
+....
+
+
+==== 参数
+
+[options="header", cols=".^2,.^3,.^9,.^4"]
+|===
+|类型|名称|说明|类型
+|**Body**|**alarmAnalysisDto** +
+__必填__|alarmAnalysisDto|<<_db2abf4799fb22dc0a612d97cd6ec993,告警分析Dto>>
+|===
+
+
+==== 响应
+
+[options="header", cols=".^2,.^14,.^4"]
+|===
+|HTTP代码|说明|类型
+|**200**|OK|<<_3e292184989d8861c8376f2b4a41eedd,DataResult«List«string»»>>
+|**201**|Created|无内容
+|**401**|Unauthorized|无内容
+|**403**|Forbidden|无内容
+|**404**|Not Found|无内容
+|===
+
+
+==== 消耗
+
+* `application/json`
+
+
+==== 生成
+
+* `*/*`
+
+
+==== 标签
+
+* 告警分析接口
+
+
+==== HTTP请求示例
+
+===== 请求 path
+----
+/alarmAnalysis/getAlarmAnalysisMessageByParkIds
+----
+
+
+===== 请求 body
+[source,json]
+----
+{
+  "parkIds" : [ "string" ]
+}
+----
+
+
+==== HTTP响应示例
+
+===== 响应 200
+[source,json]
+----
+{
+  "data" : [ "string" ],
+  "info" : "string",
+  "message" : "string",
+  "status" : 0
+}
+----
+
+
+[[_getalarmanalysisxjjnblusingpost]]
+=== 指标分析 （现金缴费过高）
+....
+POST /alarmAnalysis/getAlarmAnalysisXJJNBL
+....
+
+
+==== 参数
+
+[options="header", cols=".^2,.^3,.^9,.^4"]
+|===
+|类型|名称|说明|类型
+|**Body**|**alarmAnalysisDto** +
+__必填__|alarmAnalysisDto|<<_db2abf4799fb22dc0a612d97cd6ec993,告警分析Dto>>
+|===
+
+
+==== 响应
+
+[options="header", cols=".^2,.^14,.^4"]
+|===
+|HTTP代码|说明|类型
+|**200**|OK|<<_769471541b3b320428f744d146173937,DataResult«List«指标分析Vo»»>>
+|**201**|Created|无内容
+|**401**|Unauthorized|无内容
+|**403**|Forbidden|无内容
+|**404**|Not Found|无内容
+|===
+
+
+==== 消耗
+
+* `application/json`
+
+
+==== 生成
+
+* `*/*`
+
+
+==== 标签
+
+* 告警分析接口
+
+
+==== HTTP请求示例
+
+===== 请求 path
+----
+/alarmAnalysis/getAlarmAnalysisXJJNBL
+----
+
+
+===== 请求 body
+[source,json]
+----
+{
+  "parkIds" : [ "string" ]
+}
+----
+
+
+==== HTTP响应示例
+
+===== 响应 200
+[source,json]
+----
+{
+  "data" : [ {
+    "parkId" : "20170501165550463642067547810861",
+    "parkName" : "国人通信大厦",
+    "type" : "1",
+    "value" : 1.0,
+    "threshold" : "1"
+  } ],
+  "info" : "string",
+  "message" : "string",
+  "status" : 0
+}
+----
+
+
+[[_gethomealarmanalysislistusingpost]]
+=== 查询告警分析结果(首頁)
+....
+POST /alarmAnalysis/getHomeAlarmAnalysisList
+....
+
+
+==== 参数
+
+[options="header", cols=".^2,.^3,.^9,.^4"]
+|===
+|类型|名称|说明|类型
+|**Body**|**alarmAnalysisRo** +
+__必填__|alarmAnalysisRo|<<_560f05821c60f2edc4b853c5379a4de5,告警分析请求RO>>
+|===
+
+
+==== 响应
+
+[options="header", cols=".^2,.^14,.^4"]
+|===
+|HTTP代码|说明|类型
+|**200**|OK|<<_8c9a2a035b077f4ca0aff373c9223aa8,DataResult«List«AlarmAnalysis»»>>
+|**201**|Created|无内容
+|**401**|Unauthorized|无内容
+|**403**|Forbidden|无内容
+|**404**|Not Found|无内容
+|===
+
+
+==== 消耗
+
+* `application/json`
+
+
+==== 生成
+
+* `*/*`
+
+
+==== 标签
+
+* 告警分析接口
+
+
+==== HTTP请求示例
+
+===== 请求 path
+----
+/alarmAnalysis/getHomeAlarmAnalysisList
+----
+
+
+===== 请求 body
+[source,json]
+----
+{
+  "managerId" : "string",
+  "month" : "string",
+  "parkId" : "string"
+}
+----
+
+
+==== HTTP响应示例
+
+===== 响应 200
+[source,json]
+----
+{
+  "data" : [ {
+    "information" : "string",
+    "priority" : "string",
+    "state" : "string",
+    "type" : "string"
+  } ],
+  "info" : "string",
+  "message" : "string",
+  "status" : 0
+}
+----
+
+
+[[_getbypccardusingpost]]
+=== getByPCCard
+....
+POST /park/getCardPay
+....
+
+
+==== 参数
+
+[options="header", cols=".^2,.^3,.^9,.^4"]
+|===
+|类型|名称|说明|类型
+|**Body**|**data** +
+__必填__|data|<<_parkpubmodelex1,ParkPubModelEx1>>
+|===
+
+
+==== 响应
+
+[options="header", cols=".^2,.^14,.^4"]
+|===
+|HTTP代码|说明|类型
+|**200**|OK|< <<_cardmonthrenew,CardMonthRenew>> > array
+|**201**|Created|无内容
+|**401**|Unauthorized|无内容
+|**403**|Forbidden|无内容
+|**404**|Not Found|无内容
+|===
+
+
+==== 消耗
+
+* `application/json`
+
+
+==== 生成
+
+* `*/*`
+
+
+==== 标签
+
+* park-info-controller
+
+
+==== HTTP请求示例
+
+===== 请求 path
+----
+/park/getCardPay
+----
+
+
+===== 请求 body
+[source,json]
+----
+{
+  "cardId" : "string",
+  "endTime" : "string",
+  "keyWord" : "string",
+  "parkCodeList" : [ "string" ],
+  "startTime" : "string"
+}
+----
+
+
+==== HTTP响应示例
+
+===== 响应 200
+[source,json]
+----
+[ {
+  "carNumber" : "string",
+  "cardId" : "string",
+  "createTime" : "string",
+  "delayEndTime" : "string",
+  "delayStartTime" : "string",
+  "isDelete" : 0,
+  "operateTime" : "string",
+  "operator" : "string",
+  "parkCode" : "string",
+  "renewId" : 0,
+  "source" : "string",
+  "ssMoney" : 0.0,
+  "stayTime" : 0,
+  "updateTime" : "string",
+  "ysMoney" : 0.0,
+  "zsTime" : 0
+} ]
+----
+
+
+[[_getbypcmerusingpost]]
+=== getByPCMer
+....
+POST /park/getMerPay
+....
+
+
+==== 参数
+
+[options="header", cols=".^2,.^3,.^9,.^4"]
+|===
+|类型|名称|说明|类型
+|**Body**|**data** +
+__必填__|data|<<_parkpubmodelex,ParkPubModelEx>>
+|===
+
+
+==== 响应
+
+[options="header", cols=".^2,.^14,.^4"]
+|===
+|HTTP代码|说明|类型
+|**200**|OK|< <<_mercouponbuy,MerCouponBuy>> > array
+|**201**|Created|无内容
+|**401**|Unauthorized|无内容
+|**403**|Forbidden|无内容
+|**404**|Not Found|无内容
+|===
+
+
+==== 消耗
+
+* `application/json`
+
+
+==== 生成
+
+* `*/*`
+
+
+==== 标签
+
+* park-info-controller
+
+
+==== HTTP请求示例
+
+===== 请求 path
+----
+/park/getMerPay
+----
+
+
+===== 请求 body
+[source,json]
+----
+{
+  "endTime" : "string",
+  "keyWord" : "string",
+  "parkCodeList" : [ "string" ],
+  "startTime" : "string"
+}
+----
+
+
+==== HTTP响应示例
+
+===== 响应 200
+[source,json]
+----
+[ {
+  "buyId" : 0,
+  "buyNum" : 0,
+  "buyTime" : "string",
+  "couponType" : "string",
+  "createTime" : "string",
+  "fee" : 0.0,
+  "isDelete" : 0,
+  "merchantName" : "string",
+  "operator" : "string",
+  "parkCode" : "string",
+  "source" : "string",
+  "totalFee" : 0.0,
+  "updateTime" : "string"
+} ]
+----
+
+
+[[_selectallusingpost]]
+=== selectAll
+....
+POST /park/getParkInfo
+....
+
+
+==== 响应
+
+[options="header", cols=".^2,.^14,.^4"]
+|===
+|HTTP代码|说明|类型
+|**200**|OK|< <<_parkinfo,ParkInfo>> > array
+|**201**|Created|无内容
+|**401**|Unauthorized|无内容
+|**403**|Forbidden|无内容
+|**404**|Not Found|无内容
+|===
+
+
+==== 消耗
+
+* `application/json`
+
+
+==== 生成
+
+* `*/*`
+
+
+==== 标签
+
+* park-info-controller
+
+
+==== HTTP请求示例
+
+===== 请求 path
+----
+/park/getParkInfo
+----
+
+
+==== HTTP响应示例
+
+===== 响应 200
+[source,json]
+----
+[ {
+  "createTime" : "string",
+  "isDelete" : 0,
+  "parkCode" : "string",
+  "parkId" : 0,
+  "parkName" : "string",
+  "supplierCode" : "string",
+  "supplierName" : "string",
+  "updateTime" : "string"
+} ]
+----
+
+
+[[_getbypcpayusingpost]]
+=== getByPCPay
+....
+POST /park/getParkPay
+....
+
+
+==== 参数
+
+[options="header", cols=".^2,.^3,.^9,.^4"]
+|===
+|类型|名称|说明|类型
+|**Body**|**data** +
+__必填__|data|<<_parkpubmodelex,ParkPubModelEx>>
+|===
+
+
+==== 响应
+
+[options="header", cols=".^2,.^14,.^4"]
+|===
+|HTTP代码|说明|类型
+|**200**|OK|< <<_parkpay,ParkPay>> > array
+|**201**|Created|无内容
+|**401**|Unauthorized|无内容
+|**403**|Forbidden|无内容
+|**404**|Not Found|无内容
+|===
+
+
+==== 消耗
+
+* `application/json`
+
+
+==== 生成
+
+* `*/*`
+
+
+==== 标签
+
+* park-info-controller
+
+
+==== HTTP请求示例
+
+===== 请求 path
+----
+/park/getParkPay
+----
+
+
+===== 请求 body
+[source,json]
+----
+{
+  "endTime" : "string",
+  "keyWord" : "string",
+  "parkCodeList" : [ "string" ],
+  "startTime" : "string"
+}
+----
+
+
+==== HTTP响应示例
+
+===== 响应 200
+[source,json]
+----
+[ {
+  "carNumber" : "string",
+  "createTime" : "string",
+  "freeMoney" : 0.0,
+  "isDelete" : 0,
+  "operator" : "string",
+  "outModel" : "string",
+  "outTime" : "string",
+  "parkCode" : "string",
+  "payId" : 0,
+  "remark" : "string",
+  "source" : "string",
+  "ssMoney" : 0.0,
+  "stayTime" : 0,
+  "updateTime" : "string",
+  "yhMoney" : 0.0,
+  "ysMoney" : 0.0
+} ]
+----
+
+
+[[_getbypcinfousingpost]]
+=== getByPCInfo
+....
+POST /park/getSupInfo
+....
+
+
+==== 参数
+
+[options="header", cols=".^2,.^3,.^9,.^4"]
+|===
+|类型|名称|说明|类型
+|**Body**|**data** +
+__必填__|data|<<_parkpubmodel,ParkPubModel>>
+|===
+
+
+==== 响应
+
+[options="header", cols=".^2,.^14,.^4"]
+|===
+|HTTP代码|说明|类型
+|**200**|OK|< <<_parkinfo,ParkInfo>> > array
+|**201**|Created|无内容
+|**401**|Unauthorized|无内容
+|**403**|Forbidden|无内容
+|**404**|Not Found|无内容
+|===
+
+
+==== 消耗
+
+* `application/json`
+
+
+==== 生成
+
+* `*/*`
+
+
+==== 标签
+
+* park-info-controller
+
+
+==== HTTP请求示例
+
+===== 请求 path
+----
+/park/getSupInfo
+----
+
+
+===== 请求 body
+[source,json]
+----
+{
+  "parkCodeList" : [ "string" ]
+}
+----
+
+
+==== HTTP响应示例
+
+===== 响应 200
+[source,json]
+----
+[ {
+  "createTime" : "string",
+  "isDelete" : 0,
+  "parkCode" : "string",
+  "parkId" : 0,
+  "parkName" : "string",
+  "supplierCode" : "string",
+  "supplierName" : "string",
+  "updateTime" : "string"
+} ]
+----
+
+
+[[_sayhellousingpost]]
+=== sayHello
+....
+POST /park/hello
+....
+
+
+==== 响应
+
+[options="header", cols=".^2,.^14,.^4"]
+|===
+|HTTP代码|说明|类型
+|**200**|OK|string
+|**201**|Created|无内容
+|**401**|Unauthorized|无内容
+|**403**|Forbidden|无内容
+|**404**|Not Found|无内容
+|===
+
+
+==== 消耗
+
+* `application/json`
+
+
+==== 生成
+
+* `*/*`
+
+
+==== 标签
+
+* park-info-controller
+
+
+==== HTTP请求示例
+
+===== 请求 path
+----
+/park/hello
+----
+
+
+==== HTTP响应示例
+
+===== 响应 200
+[source,json]
+----
+"string"
+----
+
+
+[[_selectbyprimarykeyusingpost]]
+=== selectByPrimaryKey
+....
+POST /park/selectById
+....
+
+
+==== 参数
+
+[options="header", cols=".^2,.^3,.^9,.^4"]
+|===
+|类型|名称|说明|类型
+|**Query**|**id** +
+__必填__|id|integer (int32)
+|===
+
+
+==== 响应
+
+[options="header", cols=".^2,.^14,.^4"]
+|===
+|HTTP代码|说明|类型
+|**200**|OK|<<_parkinfo,ParkInfo>>
+|**201**|Created|无内容
+|**401**|Unauthorized|无内容
+|**403**|Forbidden|无内容
+|**404**|Not Found|无内容
+|===
+
+
+==== 消耗
+
+* `application/json`
+
+
+==== 生成
+
+* `*/*`
+
+
+==== 标签
+
+* park-info-controller
+
+
+==== HTTP请求示例
+
+===== 请求 path
+----
+/park/selectById
+----
+
+
+===== 请求 query
+[source,json]
+----
+{
+  "id" : 0
+}
+----
+
+
+==== HTTP响应示例
+
+===== 响应 200
+[source,json]
+----
+{
+  "createTime" : "string",
+  "isDelete" : 0,
+  "parkCode" : "string",
+  "parkId" : 0,
+  "parkName" : "string",
+  "supplierCode" : "string",
+  "supplierName" : "string",
+  "updateTime" : "string"
+}
+----
+
+
+[[_selectallprojectsbaseinfousingget]]
+=== 查询用户拥有的全部项目汇总基础信息
+....
+GET /parkBasicData/selectAllProjectsBaseInfo/{managerId}
+....
+
+
+==== 参数
+
+[options="header", cols=".^2,.^3,.^9,.^4"]
+|===
+|类型|名称|说明|类型
+|**Path**|**managerId** +
+__必填__|managerId|string
+|===
+
+
+==== 响应
+
+[options="header", cols=".^2,.^14,.^4"]
+|===
+|HTTP代码|说明|类型
+|**200**|OK|<<_fb01ebf622fcd4f08e4c96048f617b81,DataResult«所有项目汇总基础信息Vo»>>
+|**401**|Unauthorized|无内容
+|**403**|Forbidden|无内容
+|**404**|Not Found|无内容
+|===
+
+
+==== 生成
+
+* `*/*`
+
+
+==== 标签
+
+* 项目基础数据
+
+
+==== HTTP请求示例
+
+===== 请求 path
+----
+/parkBasicData/selectAllProjectsBaseInfo/string
+----
+
+
+==== HTTP响应示例
+
+===== 响应 200
+[source,json]
+----
+{
+  "data" : {
+    "manageArea" : 204.0,
+    "residentNum" : 100,
+    "villageNum" : 20,
+    "parkIdList" : [ "string" ],
+    "villageIDList" : [ "string" ]
+  },
+  "info" : "string",
+  "message" : "string",
+  "status" : 0
+}
+----
+
+
+[[_selectbyparkidusingpost]]
+=== 查询单个/全部项目的基础数据
+....
+POST /parkBasicData/selectByParkId
+....
+
+
+==== 参数
+
+[options="header", cols=".^2,.^3,.^9,.^4"]
+|===
+|类型|名称|说明|类型
+|**Body**|**dto** +
+__必填__|dto|<<_5f65d7fd1fd177a22bdb7869f71148e7,查询项目基础数据Dto>>
+|===
+
+
+==== 响应
+
+[options="header", cols=".^2,.^14,.^4"]
+|===
+|HTTP代码|说明|类型
+|**200**|OK|<<_e139f4493b266863254eb97b8bd1b5fb,DataResult«基础数据（单个或全部）Vo»>>
+|**201**|Created|无内容
+|**401**|Unauthorized|无内容
+|**403**|Forbidden|无内容
+|**404**|Not Found|无内容
+|===
+
+
+==== 消耗
+
+* `application/json`
+
+
+==== 生成
+
+* `*/*`
+
+
+==== 标签
+
+* 项目基础数据
+
+
+==== HTTP请求示例
+
+===== 请求 path
+----
+/parkBasicData/selectByParkId
+----
+
+
+===== 请求 body
+[source,json]
+----
+{
+  "parkIdList" : [ "string" ],
+  "managerId" : "5146"
+}
+----
+
+
+==== HTTP响应示例
+
+===== 响应 200
+[source,json]
+----
+{
+  "data" : {
+    "totalLot" : 100,
+    "parkCardCount" : 500,
+    "ysAmount" : 1800000.0,
+    "ssAmount" : 1500000.0,
+    "suppliers" : 10,
+    "parkNum" : 20
+  },
+  "info" : "string",
+  "message" : "string",
+  "status" : 0
+}
+----
+
+
+[[_selectprojectsdatausingpost]]
+=== 查询单个项目基础信息
+....
+POST /parkBasicData/selectProjectsData
+....
+
+
+==== 参数
+
+[options="header", cols=".^2,.^3,.^9,.^4"]
+|===
+|类型|名称|说明|类型
+|**Body**|**alarmAnalysisRo** +
+__必填__|alarmAnalysisRo|<<_560f05821c60f2edc4b853c5379a4de5,告警分析请求RO>>
+|===
+
+
+==== 响应
+
+[options="header", cols=".^2,.^14,.^4"]
+|===
+|HTTP代码|说明|类型
+|**200**|OK|<<_01d31d753a35e2f476ec87de6cb59fbc,DataResult«ArrayList«ProjectsData»»>>
+|**201**|Created|无内容
+|**401**|Unauthorized|无内容
+|**403**|Forbidden|无内容
+|**404**|Not Found|无内容
+|===
+
+
+==== 消耗
+
+* `application/json`
+
+
+==== 生成
+
+* `*/*`
+
+
+==== 标签
+
+* 项目基础数据
+
+
+==== HTTP请求示例
+
+===== 请求 path
+----
+/parkBasicData/selectProjectsData
+----
+
+
+===== 请求 body
+[source,json]
+----
+{
+  "managerId" : "string",
+  "month" : "string",
+  "parkId" : "string"
+}
+----
+
+
+==== HTTP响应示例
+
+===== 响应 200
+[source,json]
+----
+{
+  "data" : [ {
+    "city" : "string",
+    "communityId" : "string",
+    "companyId" : "string",
+    "manageArea" : "string",
+    "managerId" : "string",
+    "name" : "string",
+    "parkId" : "string",
+    "residentNum" : "string",
+    "status" : "string",
+    "villagePhoto" : "string"
+  } ],
+  "info" : "string",
+  "message" : "string",
+  "status" : 0
+}
+----
+
+
+[[_getparkhanduproddaylistusingpost]]
+=== 查询异常抬杆 日
+....
+POST /parkHandUprodDay/getParkHandUprodDayList
+....
+
+
+==== 参数
+
+[options="header", cols=".^2,.^3,.^9,.^4"]
+|===
+|类型|名称|说明|类型
+|**Query**|**parkIdList** +
+__必填__|parkIdList|< string > array(multi)
+|===
+
+
+==== 响应
+
+[options="header", cols=".^2,.^14,.^4"]
+|===
+|HTTP代码|说明|类型
+|**200**|OK|<<_0d902e8dc81f368f06d65609187ca4e7,DataResult«List«最近7天异常抬竿数据汇总Vo»»>>
+|**201**|Created|无内容
+|**401**|Unauthorized|无内容
+|**403**|Forbidden|无内容
+|**404**|Not Found|无内容
+|===
+
+
+==== 消耗
+
+* `application/json`
+
+
+==== 生成
+
+* `*/*`
+
+
+==== 标签
+
+* 异常抬杆
+
+
+==== HTTP请求示例
+
+===== 请求 path
+----
+/parkHandUprodDay/getParkHandUprodDayList
+----
+
+
+===== 请求 query
+[source,json]
+----
+{
+  "parkIdList" : "string"
+}
+----
+
+
+==== HTTP响应示例
+
+===== 响应 200
+[source,json]
+----
+{
+  "data" : [ {
+    "dataDay" : "20190602",
+    "ysAmount" : 15000,
+    "errFreeAmount" : 100,
+    "freeProfit" : 2,
+    "errFreeCnt" : 10,
+    "totalCnt" : 200,
+    "errProfit" : 2
+  } ],
+  "info" : "string",
+  "message" : "string",
+  "status" : 0
+}
+----
+
+
+[[_selectbyparkidanddatamonthusingpost]]
+=== 查询异常抬杆 月
+....
+POST /parkHandUprodDay/selectByParkIdAndDataMonth
+....
+
+
+==== 参数
+
+[options="header", cols=".^2,.^3,.^9,.^4"]
+|===
+|类型|名称|说明|类型
+|**Query**|**parkIdList** +
+__必填__|parkIdList|< string > array(multi)
+|===
+
+
+==== 响应
+
+[options="header", cols=".^2,.^14,.^4"]
+|===
+|HTTP代码|说明|类型
+|**200**|OK|<<_1bd492ea8c13c888b8a9b3f18ee2ad35,DataResult«List«最近一年异常抬竿Vo»»>>
+|**201**|Created|无内容
+|**401**|Unauthorized|无内容
+|**403**|Forbidden|无内容
+|**404**|Not Found|无内容
+|===
+
+
+==== 消耗
+
+* `application/json`
+
+
+==== 生成
+
+* `*/*`
+
+
+==== 标签
+
+* 异常抬杆
+
+
+==== HTTP请求示例
+
+===== 请求 path
+----
+/parkHandUprodDay/selectByParkIdAndDataMonth
+----
+
+
+===== 请求 query
+[source,json]
+----
+{
+  "parkIdList" : "string"
+}
+----
+
+
+==== HTTP响应示例
+
+===== 响应 200
+[source,json]
+----
+{
+  "data" : [ {
+    "dataDay" : "201906",
+    "ysAmount" : 15000,
+    "errFreeAmount" : 100,
+    "freeProfit" : 2,
+    "errFreeCnt" : 10,
+    "totalCnt" : 200,
+    "errProfit" : 2
+  } ],
+  "info" : "string",
+  "message" : "string",
+  "status" : 0
+}
+----
+
+
+[[_selectbyparkidanddatamonthbeforeusingget]]
+=== 审计一个月前的异常抬杆数据
+....
+GET /parkHandUprodDay/selectByParkIdAndDataMonthBefore
+....
+
+
+==== 参数
+
+[options="header", cols=".^2,.^3,.^9,.^4"]
+|===
+|类型|名称|说明|类型
+|**Query**|**month** +
+__必填__|month|string
+|**Query**|**parkId** +
+__必填__|parkId|string
+|===
+
+
+==== 响应
+
+[options="header", cols=".^2,.^14,.^4"]
+|===
+|HTTP代码|说明|类型
+|**200**|OK|<<_5a60bfe112d0edc1fc795e2afa8c91d7,DataResult«AuditCarApplyInfo»>>
+|**401**|Unauthorized|无内容
+|**403**|Forbidden|无内容
+|**404**|Not Found|无内容
+|===
+
+
+==== 生成
+
+* `*/*`
+
+
+==== 标签
+
+* 异常抬杆
+
+
+==== HTTP请求示例
+
+===== 请求 path
+----
+/parkHandUprodDay/selectByParkIdAndDataMonthBefore
+----
+
+
+===== 请求 query
+[source,json]
+----
+{
+  "month" : "string",
+  "parkId" : "string"
+}
+----
+
+
+==== HTTP响应示例
+
+===== 响应 200
+[source,json]
+----
+{
+  "data" : {
+    "applyTime" : "string",
+    "auditType" : 0,
+    "communityId" : 0,
+    "communityName" : "string",
+    "companyId" : 0,
+    "companyName" : "string",
+    "exAmount" : 0.0,
+    "exNums" : 0,
+    "exType" : 0,
+    "exTypeDes" : "string",
+    "freeNums" : 0,
+    "handlerNums" : 0,
+    "involvedNums" : 0,
+    "parkId" : "string"
+  },
+  "info" : "string",
+  "message" : "string",
+  "status" : 0
+}
+----
+
+
+[[_selectbyparkidanddayusingpost]]
+=== 停车出入情况(查询上个月的数据)
+....
+POST /parkInoutHMonth/selectByParkIdAndDay
+....
+
+
+==== 参数
+
+[options="header", cols=".^2,.^3,.^9,.^4"]
+|===
+|类型|名称|说明|类型
+|**Query**|**parkIdList** +
+__必填__|parkIdList|< string > array(multi)
+|===
+
+
+==== 响应
+
+[options="header", cols=".^2,.^14,.^4"]
+|===
+|HTTP代码|说明|类型
+|**200**|OK|<<_963c2df5870a3836dfc3b69b4f7a4ff1,DataResult«List«停车场出入统计Vo»»>>
+|**201**|Created|无内容
+|**401**|Unauthorized|无内容
+|**403**|Forbidden|无内容
+|**404**|Not Found|无内容
+|===
+
+
+==== 消耗
+
+* `application/json`
+
+
+==== 生成
+
+* `*/*`
+
+
+==== 标签
+
+* 停车出入情况
+
+
+==== HTTP请求示例
+
+===== 请求 path
+----
+/parkInoutHMonth/selectByParkIdAndDay
+----
+
+
+===== 请求 query
+[source,json]
+----
+{
+  "parkIdList" : "string"
+}
+----
+
+
+==== HTTP响应示例
+
+===== 响应 200
+[source,json]
+----
+{
+  "data" : [ {
+    "inCount" : 6,
+    "outCount" : 7,
+    "dataHour" : "12"
+  } ],
+  "info" : "string",
+  "message" : "string",
+  "status" : 0
+}
+----
+
+
+[[_selectbyparkidanddayusingpost_1]]
+=== 车位使用率 前一个月的数据
+....
+POST /parkSpaceMonth/selectByParkIdAndDay
+....
+
+
+==== 参数
+
+[options="header", cols=".^2,.^3,.^9,.^4"]
+|===
+|类型|名称|说明|类型
+|**Query**|**parkIdList** +
+__必填__|parkIdList|< string > array(multi)
+|===
+
+
+==== 响应
+
+[options="header", cols=".^2,.^14,.^4"]
+|===
+|HTTP代码|说明|类型
+|**200**|OK|<<_b7c90bfc18eded9604fc4db8cf555712,DataResult«List«停车场利用率统计Vo»»>>
+|**201**|Created|无内容
+|**401**|Unauthorized|无内容
+|**403**|Forbidden|无内容
+|**404**|Not Found|无内容
+|===
+
+
+==== 消耗
+
+* `application/json`
+
+
+==== 生成
+
+* `*/*`
+
+
+==== 标签
+
+* 车位使用率
+
+
+==== HTTP请求示例
+
+===== 请求 path
+----
+/parkSpaceMonth/selectByParkIdAndDay
+----
+
+
+===== 请求 query
+[source,json]
+----
+{
+  "parkIdList" : "string"
+}
+----
+
+
+==== HTTP响应示例
+
+===== 响应 200
+[source,json]
+----
+{
+  "data" : [ {
+    "usedProfit" : 80,
+    "dataHour" : 23
+  } ],
+  "info" : "string",
+  "message" : "string",
+  "status" : 0
+}
+----
+
+
+[[_selectparktotalrevenuebyparkidusingpost]]
+=== 查询上个月收费情况数据
+....
+POST /parkTotalRevenue/selectParkTotalRevenueByPakrId
+....
+
+
+==== 参数
+
+[options="header", cols=".^2,.^3,.^9,.^4"]
+|===
+|类型|名称|说明|类型
+|**Query**|**parkIdList** +
+__必填__|parkIdList|< string > array(multi)
+|===
+
+
+==== 响应
+
+[options="header", cols=".^2,.^14,.^4"]
+|===
+|HTTP代码|说明|类型
+|**200**|OK|<<_762e0f5813bdd5c9e7fe7d9f80c8d5e9,DataResult«停车场收费情况汇总»>>
+|**201**|Created|无内容
+|**401**|Unauthorized|无内容
+|**403**|Forbidden|无内容
+|**404**|Not Found|无内容
+|===
+
+
+==== 消耗
+
+* `application/json`
+
+
+==== 生成
+
+* `*/*`
+
+
+==== 标签
+
+* 收费情况
+
+
+==== HTTP请求示例
+
+===== 请求 path
+----
+/parkTotalRevenue/selectParkTotalRevenueByPakrId
+----
+
+
+===== 请求 query
+[source,json]
+----
+{
+  "parkIdList" : "string"
+}
+----
+
+
+==== HTTP响应示例
+
+===== 响应 200
+[source,json]
+----
+{
+  "data" : {
+    "onlineAmount" : 20000.0,
+    "cashAmount" : 25000.0,
+    "ssAmount" : 45000.0
+  },
+  "info" : "string",
+  "message" : "string",
+  "status" : 0
+}
+----
+
+
+[[_testusingget]]
+=== 调用定时任
+....
+GET /schedulerTaskTestController/test
+....
+
+
+==== 响应
+
+[options="header", cols=".^2,.^14,.^4"]
+|===
+|HTTP代码|说明|类型
+|**200**|OK|<<_5e3f4bf6c50a34cdc848c016286af76d,DataResult«string»>>
+|**401**|Unauthorized|无内容
+|**403**|Forbidden|无内容
+|**404**|Not Found|无内容
+|===
+
+
+==== 生成
+
+* `*/*`
+
+
+==== 标签
+
+* 定时任务接口
+
+
+==== HTTP请求示例
+
+===== 请求 path
+----
+/schedulerTaskTestController/test
+----
+
+
+==== HTTP响应示例
+
+===== 响应 200
+[source,json]
+----
+{
+  "data" : "string",
+  "info" : "string",
+  "message" : "string",
+  "status" : 0
+}
+----
+
+
+[[_getcorporatefunctionsvousingget]]
+=== 人员费用同比增长情况
+....
+GET /throngAI/getCorporateFunctionsVo
+....
+
+
+==== 响应
+
+[options="header", cols=".^2,.^14,.^4"]
+|===
+|HTTP代码|说明|类型
+|**200**|OK|<<_d34e666ca364c663915b52ff52e0bdbd,DataResult«ArrayList«人员费用同比增长情况Vo»»>>
+|**401**|Unauthorized|无内容
+|**403**|Forbidden|无内容
+|**404**|Not Found|无内容
+|===
+
+
+==== 生成
+
+* `*/*`
+
+
+==== 标签
+
+* 人群AI
+
+
+==== HTTP请求示例
+
+===== 请求 path
+----
+/throngAI/getCorporateFunctionsVo
+----
+
+
+==== HTTP响应示例
+
+===== 响应 200
+[source,json]
+----
+{
+  "data" : [ {
+    "category" : "string",
+    "value" : 0.0
+  } ],
+  "info" : "string",
+  "message" : "string",
+  "status" : 0
+}
+----
+
+
+[[_getmovementpersonnelusingget]]
+=== 高管页面入职离职
+....
+GET /throngAI/getMovementPersonnel
+....
+
+
+==== 响应
+
+[options="header", cols=".^2,.^14,.^4"]
+|===
+|HTTP代码|说明|类型
+|**200**|OK|<<_af5aeb5ee164f9dca96b64c3262588f4,DataResult«人员流动入职离职人数Vo»>>
+|**401**|Unauthorized|无内容
+|**403**|Forbidden|无内容
+|**404**|Not Found|无内容
+|===
+
+
+==== 生成
+
+* `*/*`
+
+
+==== 标签
+
+* 人群AI
+
+
+==== HTTP请求示例
+
+===== 请求 path
+----
+/throngAI/getMovementPersonnel
+----
+
+
+==== HTTP响应示例
+
+===== 响应 200
+[source,json]
+----
+{
+  "data" : {
+    "lizhi" : "string",
+    "ruzhi" : "string"
+  },
+  "info" : "string",
+  "message" : "string",
+  "status" : 0
+}
+----
+
+
+[[_getnumberusingget]]
+=== 在职人数
+....
+GET /throngAI/getNumber
+....
+
+
+==== 响应
+
+[options="header", cols=".^2,.^14,.^4"]
+|===
+|HTTP代码|说明|类型
+|**200**|OK|<<_5f096e1ee81548760ee06f942ffe2355,DataResult«int»>>
+|**401**|Unauthorized|无内容
+|**403**|Forbidden|无内容
+|**404**|Not Found|无内容
+|===
+
+
+==== 生成
+
+* `*/*`
+
+
+==== 标签
+
+* 人群AI
+
+
+==== HTTP请求示例
+
+===== 请求 path
+----
+/throngAI/getNumber
+----
+
+
+==== HTTP响应示例
+
+===== 响应 200
+[source,json]
+----
+{
+  "data" : 0,
+  "info" : "string",
+  "message" : "string",
+  "status" : 0
+}
+----
+
+
+[[_getpeoplenumusingget]]
+=== 获取在职、外包、本月入职、本月离职
+....
+GET /throngAI/getPeopleNum
+....
+
+
+==== 参数
+
+[options="header", cols=".^2,.^3,.^9,.^4"]
+|===
+|类型|名称|说明|类型
+|**Query**|**zhenjiaId** +
+__必填__|zhenjiaId|string
+|===
+
+
+==== 响应
+
+[options="header", cols=".^2,.^14,.^4"]
+|===
+|HTTP代码|说明|类型
+|**200**|OK|<<_d00041ad79d07e050951366b96152166,DataResult«人数Vo»>>
+|**401**|Unauthorized|无内容
+|**403**|Forbidden|无内容
+|**404**|Not Found|无内容
+|===
+
+
+==== 生成
+
+* `*/*`
+
+
+==== 标签
+
+* 人群AI
+
+
+==== HTTP请求示例
+
+===== 请求 path
+----
+/throngAI/getPeopleNum
+----
+
+
+===== 请求 query
+[source,json]
+----
+{
+  "zhenjiaId" : "string"
+}
+----
+
+
+==== HTTP响应示例
+
+===== 响应 200
+[source,json]
+----
+{
+  "data" : {
+    "entryJob" : 0,
+    "leaveJob" : 0,
+    "onJob" : 0,
+    "outJob" : 0
+  },
+  "info" : "string",
+  "message" : "string",
+  "status" : 0
+}
+----
+
+
+[[_getpersonnelcostsvousingget]]
+=== 人员费用同比
+....
+GET /throngAI/getPersonnelCostsVo
+....
+
+
+==== 响应
+
+[options="header", cols=".^2,.^14,.^4"]
+|===
+|HTTP代码|说明|类型
+|**200**|OK|<<_d061745d1fe93cfc1c3a61f99bdfbece,DataResult«人员费用同比和百分比Vo»>>
+|**401**|Unauthorized|无内容
+|**403**|Forbidden|无内容
+|**404**|Not Found|无内容
+|===
+
+
+==== 生成
+
+* `*/*`
+
+
+==== 标签
+
+* 人群AI
+
+
+==== HTTP请求示例
+
+===== 请求 path
+----
+/throngAI/getPersonnelCostsVo
+----
+
+
+==== HTTP响应示例
+
+===== 响应 200
+[source,json]
+----
+{
+  "data" : {
+    "list" : [ {
+      "centerCode" : "string",
+      "nian" : "string",
+      "percentage" : 0.0
+    } ],
+    "percentage" : 0.0
+  },
+  "info" : "string",
+  "message" : "string",
+  "status" : 0
+}
+----
+
+
+[[_getpersonnelexpensepercentagevousingget]]
+=== 项目人员费用/主营业务同比
+....
+GET /throngAI/getPersonnelExpensePercentageVo
+....
+
+
+==== 参数
+
+[options="header", cols=".^2,.^3,.^9,.^4"]
+|===
+|类型|名称|说明|类型
+|**Query**|**tdId** +
+__必填__|tdId|string
+|===
+
+
+==== 响应
+
+[options="header", cols=".^2,.^14,.^4"]
+|===
+|HTTP代码|说明|类型
+|**200**|OK|<<_1e80f5233b97d2638baf5b13a5845f6a,主营业务同比»»>>
+|**401**|Unauthorized|无内容
+|**403**|Forbidden|无内容
+|**404**|Not Found|无内容
+|===
+
+
+==== 生成
+
+* `*/*`
+
+
+==== 标签
+
+* 人群AI
+
+
+==== HTTP请求示例
+
+===== 请求 path
+----
+/throngAI/getPersonnelExpensePercentageVo
+----
+
+
+===== 请求 query
+[source,json]
+----
+{
+  "tdId" : "string"
+}
+----
+
+
+==== HTTP响应示例
+
+===== 响应 200
+[source,json]
+----
+"<<_1e80f5233b97d2638baf5b13a5845f6a>>"
+----
+
+
+[[_getpersonnelexpensevousingget]]
+=== 项目人员费用同比
+....
+GET /throngAI/getPersonnelExpenseVo
+....
+
+
+==== 参数
+
+[options="header", cols=".^2,.^3,.^9,.^4"]
+|===
+|类型|名称|说明|类型
+|**Query**|**tdId** +
+__必填__|tdId|string
+|===
+
+
+==== 响应
+
+[options="header", cols=".^2,.^14,.^4"]
+|===
+|HTTP代码|说明|类型
+|**200**|OK|<<_c694d70551fa38baec18d9544e289fe1,DataResult«ArrayList«项目人员费用同比Vo»»>>
+|**401**|Unauthorized|无内容
+|**403**|Forbidden|无内容
+|**404**|Not Found|无内容
+|===
+
+
+==== 生成
+
+* `*/*`
+
+
+==== 标签
+
+* 人群AI
+
+
+==== HTTP请求示例
+
+===== 请求 path
+----
+/throngAI/getPersonnelExpenseVo
+----
+
+
+===== 请求 query
+[source,json]
+----
+{
+  "tdId" : "string"
+}
+----
+
+
+==== HTTP响应示例
+
+===== 响应 200
+[source,json]
+----
+{
+  "data" : [ {
+    "expense" : "string",
+    "increase" : 0.0,
+    "nian" : "string"
+  } ],
+  "info" : "string",
+  "message" : "string",
+  "status" : 0
+}
+----
+
+
+[[_getpolynumbervousingget]]
+=== 保臻人数:类型 1:保臻科技,2:集团总部
+....
+GET /throngAI/getPolyNumberVo
+....
+
+
+==== 参数
+
+[options="header", cols=".^2,.^3,.^9,.^4"]
+|===
+|类型|名称|说明|类型
+|**Query**|**type** +
+__必填__|type|integer (int32)
+|===
+
+
+==== 响应
+
+[options="header", cols=".^2,.^14,.^4"]
+|===
+|HTTP代码|说明|类型
+|**200**|OK|<<_f7f565d94421d306a5bdc6357f0450bd,DataResult«保臻Vo»>>
+|**401**|Unauthorized|无内容
+|**403**|Forbidden|无内容
+|**404**|Not Found|无内容
+|===
+
+
+==== 生成
+
+* `*/*`
+
+
+==== 标签
+
+* 人群AI
+
+
+==== HTTP请求示例
+
+===== 请求 path
+----
+/throngAI/getPolyNumberVo
+----
+
+
+===== 请求 query
+[source,json]
+----
+{
+  "type" : 0
+}
+----
+
+
+==== HTTP响应示例
+
+===== 响应 200
+[source,json]
+----
+{
+  "data" : {
+    "data" : [ {
+      "department" : "string",
+      "staff" : "string"
+    } ],
+    "sum" : 0
+  },
+  "info" : "string",
+  "message" : "string",
+  "status" : 0
+}
+----
+
+
+[[_getpostionnumusingget]]
+=== 获取职位人数
+....
+GET /throngAI/getPostionNum
+....
+
+
+==== 参数
+
+[options="header", cols=".^2,.^3,.^9,.^4"]
+|===
+|类型|名称|说明|类型
+|**Query**|**zhenjiaId** +
+__必填__|zhenjiaId|string
+|===
+
+
+==== 响应
+
+[options="header", cols=".^2,.^14,.^4"]
+|===
+|HTTP代码|说明|类型
+|**200**|OK|<<_69221bb340b07853b74c0bac4cbe3b76,DataResult«ArrayList«职位人数Vo»»>>
+|**401**|Unauthorized|无内容
+|**403**|Forbidden|无内容
+|**404**|Not Found|无内容
+|===
+
+
+==== 生成
+
+* `*/*`
+
+
+==== 标签
+
+* 人群AI
+
+
+==== HTTP请求示例
+
+===== 请求 path
+----
+/throngAI/getPostionNum
+----
+
+
+===== 请求 query
+[source,json]
+----
+{
+  "zhenjiaId" : "string"
+}
+----
+
+
+==== HTTP响应示例
+
+===== 响应 200
+[source,json]
+----
+{
+  "data" : [ {
+    "num" : 0,
+    "postion" : "string"
+  } ],
+  "info" : "string",
+  "message" : "string",
+  "status" : 0
+}
+----
+
+
+[[_seniormanagerusingget]]
+=== 高管首页分析结果
+....
+GET /throngAI/seniorManager
+....
+
+
+==== 响应
+
+[options="header", cols=".^2,.^14,.^4"]
+|===
+|HTTP代码|说明|类型
+|**200**|OK|<<_5e3f4bf6c50a34cdc848c016286af76d,DataResult«string»>>
+|**401**|Unauthorized|无内容
+|**403**|Forbidden|无内容
+|**404**|Not Found|无内容
+|===
+
+
+==== 生成
+
+* `*/*`
+
+
+==== 标签
+
+* 人群AI
+
+
+==== HTTP请求示例
+
+===== 请求 path
+----
+/throngAI/seniorManager
+----
+
+
+==== HTTP响应示例
+
+===== 响应 200
+[source,json]
+----
+{
+  "data" : "string",
+  "info" : "string",
+  "message" : "string",
+  "status" : 0
+}
+----
+
+
+[[_summaryusingget]]
+=== 人群项目首页分析结果
+....
+GET /throngAI/summary
+....
+
+
+==== 参数
+
+[options="header", cols=".^2,.^3,.^9,.^4"]
+|===
+|类型|名称|说明|类型
+|**Query**|**tdId** +
+__必填__|tdId|string
+|===
+
+
+==== 响应
+
+[options="header", cols=".^2,.^14,.^4"]
+|===
+|HTTP代码|说明|类型
+|**200**|OK|<<_5e3f4bf6c50a34cdc848c016286af76d,DataResult«string»>>
+|**401**|Unauthorized|无内容
+|**403**|Forbidden|无内容
+|**404**|Not Found|无内容
+|===
+
+
+==== 生成
+
+* `*/*`
+
+
+==== 标签
+
+* 人群AI
+
+
+==== HTTP请求示例
+
+===== 请求 path
+----
+/throngAI/summary
+----
+
+
+===== 请求 query
+[source,json]
+----
+{
+  "tdId" : "string"
+}
+----
+
+
+==== HTTP响应示例
+
+===== 响应 200
+[source,json]
+----
+{
+  "data" : "string",
+  "info" : "string",
+  "message" : "string",
+  "status" : 0
+}
+----
+
+
+[[_caiwualarmtaskusingpost]]
+=== 催缴信息
+....
+POST /zjIncome/caiwuAlarmTask
+....
+
+
+==== 参数
+
+[options="header", cols=".^2,.^3,.^9,.^4"]
+|===
+|类型|名称|说明|类型
+|**Body**|**params** +
+__必填__|{"proId":1}|string
+|===
+
+
+==== 响应
+
+[options="header", cols=".^2,.^14,.^4"]
+|===
+|HTTP代码|说明|类型
+|**200**|OK|<<_commonresponse,CommonResponse>>
+|**201**|Created|无内容
+|**401**|Unauthorized|无内容
+|**403**|Forbidden|无内容
+|**404**|Not Found|无内容
+|===
+
+
+==== 消耗
+
+* `application/json`
+
+
+==== 生成
+
+* `*/*`
+
+
+==== 标签
+
+* 财务AI分析、运营状况接口
+
+
+==== HTTP请求示例
+
+===== 请求 path
+----
+/zjIncome/caiwuAlarmTask
+----
+
+
+===== 请求 body
+[source,json]
+----
+{ }
+----
+
+
+==== HTTP响应示例
+
+===== 响应 200
+[source,json]
+----
+{
+  "data" : "object",
+  "result" : 0,
+  "resultNote" : "string"
+}
+----
+
+
+[[_querycapturemonyeartrendusingpost]]
+=== 收缴情况
+....
+POST /zjIncome/queryCaptureMonYearTrend
+....
+
+
+==== 参数
+
+[options="header", cols=".^2,.^3,.^9,.^4"]
+|===
+|类型|名称|说明|类型
+|**Body**|**params** +
+__必填__|{"proidList":[3,5,21],"year":"2019","chargeClass":0,"method":0}|string
+|===
+
+
+==== 响应
+
+[options="header", cols=".^2,.^14,.^4"]
+|===
+|HTTP代码|说明|类型
+|**200**|OK|<<_commonresponse,CommonResponse>>
+|**201**|Created|无内容
+|**401**|Unauthorized|无内容
+|**403**|Forbidden|无内容
+|**404**|Not Found|无内容
+|===
+
+
+==== 消耗
+
+* `application/json`
+
+
+==== 生成
+
+* `*/*`
+
+
+==== 标签
+
+* 财务AI分析、运营状况接口
+
+
+==== HTTP请求示例
+
+===== 请求 path
+----
+/zjIncome/queryCaptureMonYearTrend
+----
+
+
+===== 请求 body
+[source,json]
+----
+{ }
+----
+
+
+==== HTTP响应示例
+
+===== 响应 200
+[source,json]
+----
+{
+  "data" : "object",
+  "result" : 0,
+  "resultNote" : "string"
+}
+----
+
+
+[[_queryprochargerateusingpost]]
+=== queryProChargeRate
+....
+POST /zjIncome/queryProChargeRate
+....
+
+
+==== 参数
+
+[options="header", cols=".^2,.^3,.^9,.^4"]
+|===
+|类型|名称|说明|类型
+|**Body**|**params** +
+__必填__|params|string
+|===
+
+
+==== 响应
+
+[options="header", cols=".^2,.^14,.^4"]
+|===
+|HTTP代码|说明|类型
+|**200**|OK|<<_commonresponse,CommonResponse>>
+|**201**|Created|无内容
+|**401**|Unauthorized|无内容
+|**403**|Forbidden|无内容
+|**404**|Not Found|无内容
+|===
+
+
+==== 消耗
+
+* `application/json`
+
+
+==== 生成
+
+* `*/*`
+
+
+==== 标签
+
+* 财务AI分析、运营状况接口
+
+
+==== HTTP请求示例
+
+===== 请求 path
+----
+/zjIncome/queryProChargeRate
+----
+
+
+===== 请求 body
+[source,json]
+----
+{ }
+----
+
+
+==== HTTP响应示例
+
+===== 响应 200
+[source,json]
+----
+{
+  "data" : "object",
+  "result" : 0,
+  "resultNote" : "string"
+}
+----
+
+
+[[_queryprochargeyearinfousingpost]]
+=== 实收记录---实收本年、往年
+....
+POST /zjIncome/queryProChargeYearInfo
+....
+
+
+==== 参数
+
+[options="header", cols=".^2,.^3,.^9,.^4"]
+|===
+|类型|名称|说明|类型
+|**Body**|**params** +
+__必填__|{"proidList":[3,5,21],"year":"2019","method":3}|string
+|===
+
+
+==== 响应
+
+[options="header", cols=".^2,.^14,.^4"]
+|===
+|HTTP代码|说明|类型
+|**200**|OK|<<_commonresponse,CommonResponse>>
+|**201**|Created|无内容
+|**401**|Unauthorized|无内容
+|**403**|Forbidden|无内容
+|**404**|Not Found|无内容
+|===
+
+
+==== 消耗
+
+* `application/json`
+
+
+==== 生成
+
+* `*/*`
+
+
+==== 标签
+
+* 财务AI分析、运营状况接口
+
+
+==== HTTP请求示例
+
+===== 请求 path
+----
+/zjIncome/queryProChargeYearInfo
+----
+
+
+===== 请求 body
+[source,json]
+----
+{ }
+----
+
+
+==== HTTP响应示例
+
+===== 响应 200
+[source,json]
+----
+{
+  "data" : "object",
+  "result" : 0,
+  "resultNote" : "string"
+}
+----
+
+
+[[_queryprohisarrearsinfousingpost]]
+=== 实收记录---往年欠款情况
+....
+POST /zjIncome/queryProHisArrearsInfo
+....
+
+
+==== 参数
+
+[options="header", cols=".^2,.^3,.^9,.^4"]
+|===
+|类型|名称|说明|类型
+|**Body**|**params** +
+__必填__|{"proidList":[3,5,21],"year":"2019"}|string
+|===
+
+
+==== 响应
+
+[options="header", cols=".^2,.^14,.^4"]
+|===
+|HTTP代码|说明|类型
+|**200**|OK|<<_commonresponse,CommonResponse>>
+|**201**|Created|无内容
+|**401**|Unauthorized|无内容
+|**403**|Forbidden|无内容
+|**404**|Not Found|无内容
+|===
+
+
+==== 消耗
+
+* `application/json`
+
+
+==== 生成
+
+* `*/*`
+
+
+==== 标签
+
+* 财务AI分析、运营状况接口
+
+
+==== HTTP请求示例
+
+===== 请求 path
+----
+/zjIncome/queryProHisArrearsInfo
+----
+
+
+===== 请求 body
+[source,json]
+----
+{ }
+----
+
+
+==== HTTP响应示例
+
+===== 响应 200
+[source,json]
+----
+{
+  "data" : "object",
+  "result" : 0,
+  "resultNote" : "string"
+}
+----
+
+
+[[_queryproloudongratetopusingpost]]
+=== 项目楼栋收缴率
+....
+POST /zjIncome/queryProLoudongRateTop
+....
+
+
+==== 参数
+
+[options="header", cols=".^2,.^3,.^9,.^4"]
+|===
+|类型|名称|说明|类型
+|**Body**|**params** +
+__必填__|{"proId":5,"year":"2019","method":1}|string
+|===
+
+
+==== 响应
+
+[options="header", cols=".^2,.^14,.^4"]
+|===
+|HTTP代码|说明|类型
+|**200**|OK|<<_commonresponse,CommonResponse>>
+|**201**|Created|无内容
+|**401**|Unauthorized|无内容
+|**403**|Forbidden|无内容
+|**404**|Not Found|无内容
+|===
+
+
+==== 消耗
+
+* `application/json`
+
+
+==== 生成
+
+* `*/*`
+
+
+==== 标签
+
+* 财务AI分析、运营状况接口
+
+
+==== HTTP请求示例
+
+===== 请求 path
+----
+/zjIncome/queryProLoudongRateTop
+----
+
+
+===== 请求 body
+[source,json]
+----
+{ }
+----
+
+
+==== HTTP响应示例
+
+===== 响应 200
+[source,json]
+----
+{
+  "data" : "object",
+  "result" : 0,
+  "resultNote" : "string"
+}
+----
+
+
+[[_querypromonyeartrendusingpost]]
+=== 实收记录---收入情况
+....
+POST /zjIncome/queryProMonYearTrend
+....
+
+
+==== 参数
+
+[options="header", cols=".^2,.^3,.^9,.^4"]
+|===
+|类型|名称|说明|类型
+|**Body**|**params** +
+__必填__|{"proidList":[3,5,21],"year":"2019","chargeClass":0,"method":0}|string
+|===
+
+
+==== 响应
+
+[options="header", cols=".^2,.^14,.^4"]
+|===
+|HTTP代码|说明|类型
+|**200**|OK|<<_commonresponse,CommonResponse>>
+|**201**|Created|无内容
+|**401**|Unauthorized|无内容
+|**403**|Forbidden|无内容
+|**404**|Not Found|无内容
+|===
+
+
+==== 消耗
+
+* `application/json`
+
+
+==== 生成
+
+* `*/*`
+
+
+==== 标签
+
+* 财务AI分析、运营状况接口
+
+
+==== HTTP请求示例
+
+===== 请求 path
+----
+/zjIncome/queryProMonYearTrend
+----
+
+
+===== 请求 body
+[source,json]
+----
+{ }
+----
+
+
+==== HTTP响应示例
+
+===== 响应 200
+[source,json]
+----
+{
+  "data" : "object",
+  "result" : 0,
+  "resultNote" : "string"
+}
+----
+
+
+[[_querypropaymethperusingpost]]
+=== 实收记录---收费方式
+....
+POST /zjIncome/queryProPayMethPer
+....
+
+
+==== 参数
+
+[options="header", cols=".^2,.^3,.^9,.^4"]
+|===
+|类型|名称|说明|类型
+|**Body**|**params** +
+__必填__|{"proidList":[3,5,21],"year":"2019","method":0}|string
+|===
+
+
+==== 响应
+
+[options="header", cols=".^2,.^14,.^4"]
+|===
+|HTTP代码|说明|类型
+|**200**|OK|<<_commonresponse,CommonResponse>>
+|**201**|Created|无内容
+|**401**|Unauthorized|无内容
+|**403**|Forbidden|无内容
+|**404**|Not Found|无内容
+|===
+
+
+==== 消耗
+
+* `application/json`
+
+
+==== 生成
+
+* `*/*`
+
+
+==== 标签
+
+* 财务AI分析、运营状况接口
+
+
+==== HTTP请求示例
+
+===== 请求 path
+----
+/zjIncome/queryProPayMethPer
+----
+
+
+===== 请求 body
+[source,json]
+----
+{ }
+----
+
+
+==== HTTP响应示例
+
+===== 响应 200
+[source,json]
+----
+{
+  "data" : "object",
+  "result" : 0,
+  "resultNote" : "string"
+}
+----
+
+
+[[_queryproyearinfousingpost]]
+=== 本年应收、本年实收、往年欠款、已收往年欠款
+....
+POST /zjIncome/queryProYearInfo
+....
+
+
+==== 参数
+
+[options="header", cols=".^2,.^3,.^9,.^4"]
+|===
+|类型|名称|说明|类型
+|**Body**|**params** +
+__必填__|{"proidList":[3,5,21],"year":"2019"}|string
+|===
+
+
+==== 响应
+
+[options="header", cols=".^2,.^14,.^4"]
+|===
+|HTTP代码|说明|类型
+|**200**|OK|<<_commonresponse,CommonResponse>>
+|**201**|Created|无内容
+|**401**|Unauthorized|无内容
+|**403**|Forbidden|无内容
+|**404**|Not Found|无内容
+|===
+
+
+==== 消耗
+
+* `application/json`
+
+
+==== 生成
+
+* `*/*`
+
+
+==== 标签
+
+* 财务AI分析、运营状况接口
+
+
+==== HTTP请求示例
+
+===== 请求 path
+----
+/zjIncome/queryProYearInfo
+----
+
+
+===== 请求 body
+[source,json]
+----
+{ }
+----
+
+
+==== HTTP响应示例
+
+===== 响应 200
+[source,json]
+----
+{
+  "data" : "object",
+  "result" : 0,
+  "resultNote" : "string"
+}
+----
+
+
+[[_queryproyearrateusingpost]]
+=== 项目收缴率
+....
+POST /zjIncome/queryProYearRate
+....
+
+
+==== 参数
+
+[options="header", cols=".^2,.^3,.^9,.^4"]
+|===
+|类型|名称|说明|类型
+|**Body**|**params** +
+__必填__|{"proidList":[3,5,21],"year":"2019"}|string
+|===
+
+
+==== 响应
+
+[options="header", cols=".^2,.^14,.^4"]
+|===
+|HTTP代码|说明|类型
+|**200**|OK|<<_commonresponse,CommonResponse>>
+|**201**|Created|无内容
+|**401**|Unauthorized|无内容
+|**403**|Forbidden|无内容
+|**404**|Not Found|无内容
+|===
+
+
+==== 消耗
+
+* `application/json`
+
+
+==== 生成
+
+* `*/*`
+
+
+==== 标签
+
+* 财务AI分析、运营状况接口
+
+
+==== HTTP请求示例
+
+===== 请求 path
+----
+/zjIncome/queryProYearRate
+----
+
+
+===== 请求 body
+[source,json]
+----
+{ }
+----
+
+
+==== HTTP响应示例
+
+===== 响应 200
+[source,json]
+----
+{
+  "data" : "object",
+  "result" : 0,
+  "resultNote" : "string"
+}
+----
+
+
+[[_queryproyearratelowerthanalarmusingpost]]
+=== 指标分析
+....
+POST /zjIncome/queryProYearRateLowerThanAlarm
+....
+
+
+==== 参数
+
+[options="header", cols=".^2,.^3,.^9,.^4"]
+|===
+|类型|名称|说明|类型
+|**Body**|**params** +
+__必填__|{"proidList":[3,5,21],"year":"2019"}|string
+|===
+
+
+==== 响应
+
+[options="header", cols=".^2,.^14,.^4"]
+|===
+|HTTP代码|说明|类型
+|**200**|OK|<<_commonresponse,CommonResponse>>
+|**201**|Created|无内容
+|**401**|Unauthorized|无内容
+|**403**|Forbidden|无内容
+|**404**|Not Found|无内容
+|===
+
+
+==== 消耗
+
+* `application/json`
+
+
+==== 生成
+
+* `*/*`
+
+
+==== 标签
+
+* 财务AI分析、运营状况接口
+
+
+==== HTTP请求示例
+
+===== 请求 path
+----
+/zjIncome/queryProYearRateLowerThanAlarm
+----
+
+
+===== 请求 body
+[source,json]
+----
+{ }
+----
+
+
+==== HTTP响应示例
+
+===== 响应 200
+[source,json]
+----
+{
+  "data" : "object",
+  "result" : 0,
+  "resultNote" : "string"
+}
+----
+
+
+[[_queryproyearratelowerthanalarmcountusingpost]]
+=== 项目汇总-财务AI分析
+....
+POST /zjIncome/queryProYearRateLowerThanAlarmCount
+....
+
+
+==== 参数
+
+[options="header", cols=".^2,.^3,.^9,.^4"]
+|===
+|类型|名称|说明|类型
+|**Body**|**params** +
+__必填__|{"proidList":[3,5,21],"year":"2019"}|string
+|===
+
+
+==== 响应
+
+[options="header", cols=".^2,.^14,.^4"]
+|===
+|HTTP代码|说明|类型
+|**200**|OK|<<_commonresponse,CommonResponse>>
+|**201**|Created|无内容
+|**401**|Unauthorized|无内容
+|**403**|Forbidden|无内容
+|**404**|Not Found|无内容
+|===
+
+
+==== 消耗
+
+* `application/json`
+
+
+==== 生成
+
+* `*/*`
+
+
+==== 标签
+
+* 财务AI分析、运营状况接口
+
+
+==== HTTP请求示例
+
+===== 请求 path
+----
+/zjIncome/queryProYearRateLowerThanAlarmCount
+----
+
+
+===== 请求 body
+[source,json]
+----
+{ }
+----
+
+
+==== HTTP响应示例
+
+===== 响应 200
+[source,json]
+----
+{
+  "data" : "object",
+  "result" : 0,
+  "resultNote" : "string"
+}
+----
+
+
+[[_queryrateinfousingpost]]
+=== 年度收缴率、月度收缴率、往年清欠率、综合收缴率
+....
+POST /zjIncome/queryRateInfo
+....
+
+
+==== 参数
+
+[options="header", cols=".^2,.^3,.^9,.^4"]
+|===
+|类型|名称|说明|类型
+|**Body**|**params** +
+__必填__|{"proidList":[3,5,21],"year":"2019"}|string
+|===
+
+
+==== 响应
+
+[options="header", cols=".^2,.^14,.^4"]
+|===
+|HTTP代码|说明|类型
+|**200**|OK|<<_commonresponse,CommonResponse>>
+|**201**|Created|无内容
+|**401**|Unauthorized|无内容
+|**403**|Forbidden|无内容
+|**404**|Not Found|无内容
+|===
+
+
+==== 消耗
+
+* `application/json`
+
+
+==== 生成
+
+* `*/*`
+
+
+==== 标签
+
+* 财务AI分析、运营状况接口
+
+
+==== HTTP请求示例
+
+===== 请求 path
+----
+/zjIncome/queryRateInfo
+----
+
+
+===== 请求 body
+[source,json]
+----
+{ }
+----
+
+
+==== HTTP响应示例
+
+===== 响应 200
+[source,json]
+----
+{
+  "data" : "object",
+  "result" : 0,
+  "resultNote" : "string"
+}
+----
+
+
+
+
+[[_definitions]]
+== 定义
+
+[[_alarmanalysis]]
+=== AlarmAnalysis
+
+[options="header", cols=".^3,.^11,.^4"]
+|===
+|名称|说明|类型
+|**information** +
+__可选__|**样例** : `"string"`|string
+|**priority** +
+__可选__|**样例** : `"string"`|string
+|**state** +
+__可选__|**样例** : `"string"`|string
+|**type** +
+__可选__|**样例** : `"string"`|string
+|===
+
+
+[[_auditcarapplyinfo]]
+=== AuditCarApplyInfo
+
+[options="header", cols=".^3,.^11,.^4"]
+|===
+|名称|说明|类型
+|**applyTime** +
+__可选__|申请时间 +
+**样例** : `"string"`|string
+|**auditType** +
+__可选__|审计类型 +
+**样例** : `0`|integer (int32)
+|**communityId** +
+__可选__|项目(小区)ID +
+**样例** : `0`|integer (int32)
+|**communityName** +
+__可选__|项目(小区)名称 +
+**样例** : `"string"`|string
+|**companyId** +
+__可选__|公司ID +
+**样例** : `0`|integer (int32)
+|**companyName** +
+__可选__|公司名称 +
+**样例** : `"string"`|string
+|**exAmount** +
+__可选__|异常金额 +
+**样例** : `0.0`|number (double)
+|**exNums** +
+__可选__|异常数量 +
+**样例** : `0`|integer (int32)
+|**exType** +
+__可选__|异常类型 +
+**样例** : `0`|integer (int32)
+|**exTypeDes** +
+__可选__|异常类型说明 +
+**样例** : `"string"`|string
+|**freeNums** +
+__可选__|免费放行数量 +
+**样例** : `0`|integer (int32)
+|**handlerNums** +
+__可选__|手动开闸次数 +
+**样例** : `0`|integer (int32)
+|**involvedNums** +
+__可选__|涉及车辆数量 +
+**样例** : `0`|integer (int32)
+|**parkId** +
+__可选__|停车场id +
+**样例** : `"string"`|string
+|===
+
+
+[[_cardmonthrenew]]
+=== CardMonthRenew
+
+[options="header", cols=".^3,.^11,.^4"]
+|===
+|名称|说明|类型
+|**carNumber** +
+__可选__|**样例** : `"string"`|string
+|**cardId** +
+__可选__|**样例** : `"string"`|string
+|**createTime** +
+__可选__|**样例** : `"string"`|string (date-time)
+|**delayEndTime** +
+__可选__|**样例** : `"string"`|string (date-time)
+|**delayStartTime** +
+__可选__|**样例** : `"string"`|string (date-time)
+|**isDelete** +
+__可选__|**样例** : `0`|integer (int32)
+|**operateTime** +
+__可选__|**样例** : `"string"`|string (date-time)
+|**operator** +
+__可选__|**样例** : `"string"`|string
+|**parkCode** +
+__可选__|**样例** : `"string"`|string
+|**renewId** +
+__可选__|**样例** : `0`|integer (int32)
+|**source** +
+__可选__|**样例** : `"string"`|string
+|**ssMoney** +
+__可选__|**样例** : `0.0`|number (double)
+|**stayTime** +
+__可选__|**样例** : `0`|integer (int32)
+|**updateTime** +
+__可选__|**样例** : `"string"`|string (date-time)
+|**ysMoney** +
+__可选__|**样例** : `0.0`|number (double)
+|**zsTime** +
+__可选__|**样例** : `0`|integer (int32)
+|===
+
+
+[[_commonresponse]]
+=== CommonResponse
+
+[options="header", cols=".^3,.^11,.^4"]
+|===
+|名称|说明|类型
+|**data** +
+__可选__|**样例** : `"object"`|object
+|**result** +
+__可选__|**样例** : `0`|integer (int32)
+|**resultNote** +
+__可选__|**样例** : `"string"`|string
+|===
+
+
+[[_01d31d753a35e2f476ec87de6cb59fbc]]
+=== DataResult«ArrayList«ProjectsData»»
+
+[options="header", cols=".^3,.^11,.^4"]
+|===
+|名称|说明|类型
+|**data** +
+__可选__|**样例** : `[ "<<_projectsdata>>" ]`|< <<_projectsdata,ProjectsData>> > array
+|**info** +
+__可选__|**样例** : `"string"`|string
+|**message** +
+__可选__|**样例** : `"string"`|string
+|**status** +
+__可选__|**样例** : `0`|integer (int32)
+|===
+
+
+[[_d34e666ca364c663915b52ff52e0bdbd]]
+=== DataResult«ArrayList«人员费用同比增长情况Vo»»
+
+[options="header", cols=".^3,.^11,.^4"]
+|===
+|名称|说明|类型
+|**data** +
+__可选__|**样例** : `[ "<<_4c93d546813d419c0629b3d3bff89406>>" ]`|< <<_4c93d546813d419c0629b3d3bff89406,人员费用同比增长情况Vo>> > array
+|**info** +
+__可选__|**样例** : `"string"`|string
+|**message** +
+__可选__|**样例** : `"string"`|string
+|**status** +
+__可选__|**样例** : `0`|integer (int32)
+|===
+
+
+[[_69221bb340b07853b74c0bac4cbe3b76]]
+=== DataResult«ArrayList«职位人数Vo»»
+
+[options="header", cols=".^3,.^11,.^4"]
+|===
+|名称|说明|类型
+|**data** +
+__可选__|**样例** : `[ "<<_5ef92ce0dc7449f261ebe35318c4ab76>>" ]`|< <<_5ef92ce0dc7449f261ebe35318c4ab76,职位人数Vo>> > array
+|**info** +
+__可选__|**样例** : `"string"`|string
+|**message** +
+__可选__|**样例** : `"string"`|string
+|**status** +
+__可选__|**样例** : `0`|integer (int32)
+|===
+
+
+[[_9a7b61a123f7bfb410c440e7ba9f598c]]
+=== DataResult«ArrayList«项目人员费用/主营业务同比»»
+
+[options="header", cols=".^3,.^11,.^4"]
+|===
+|名称|说明|类型
+|**data** +
+__可选__|**样例** : `[ "<<_22e81397711a49c36ac1ab0414ce7833>>" ]`|< <<_22e81397711a49c36ac1ab0414ce7833,主营业务同比>> > array
+|**info** +
+__可选__|**样例** : `"string"`|string
+|**message** +
+__可选__|**样例** : `"string"`|string
+|**status** +
+__可选__|**样例** : `0`|integer (int32)
+|===
+
+
+[[_c694d70551fa38baec18d9544e289fe1]]
+=== DataResult«ArrayList«项目人员费用同比Vo»»
+
+[options="header", cols=".^3,.^11,.^4"]
+|===
+|名称|说明|类型
+|**data** +
+__可选__|**样例** : `[ "<<_dc6db67d5842c26d0a9f82ff48762d2f>>" ]`|< <<_dc6db67d5842c26d0a9f82ff48762d2f,项目人员费用同比Vo>> > array
+|**info** +
+__可选__|**样例** : `"string"`|string
+|**message** +
+__可选__|**样例** : `"string"`|string
+|**status** +
+__可选__|**样例** : `0`|integer (int32)
+|===
+
+
+[[_5a60bfe112d0edc1fc795e2afa8c91d7]]
+=== DataResult«AuditCarApplyInfo»
+
+[options="header", cols=".^3,.^11,.^4"]
+|===
+|名称|说明|类型
+|**data** +
+__可选__|**样例** : `"<<_auditcarapplyinfo>>"`|<<_auditcarapplyinfo,AuditCarApplyInfo>>
+|**info** +
+__可选__|**样例** : `"string"`|string
+|**message** +
+__可选__|**样例** : `"string"`|string
+|**status** +
+__可选__|**样例** : `0`|integer (int32)
+|===
+
+
+[[_8c9a2a035b077f4ca0aff373c9223aa8]]
+=== DataResult«List«AlarmAnalysis»»
+
+[options="header", cols=".^3,.^11,.^4"]
+|===
+|名称|说明|类型
+|**data** +
+__可选__|**样例** : `[ "<<_alarmanalysis>>" ]`|< <<_alarmanalysis,AlarmAnalysis>> > array
+|**info** +
+__可选__|**样例** : `"string"`|string
+|**message** +
+__可选__|**样例** : `"string"`|string
+|**status** +
+__可选__|**样例** : `0`|integer (int32)
+|===
+
+
+[[_3e292184989d8861c8376f2b4a41eedd]]
+=== DataResult«List«string»»
+
+[options="header", cols=".^3,.^11,.^4"]
+|===
+|名称|说明|类型
+|**data** +
+__可选__|**样例** : `[ "string" ]`|< string > array
+|**info** +
+__可选__|**样例** : `"string"`|string
+|**message** +
+__可选__|**样例** : `"string"`|string
+|**status** +
+__可选__|**样例** : `0`|integer (int32)
+|===
+
+
+[[_963c2df5870a3836dfc3b69b4f7a4ff1]]
+=== DataResult«List«停车场出入统计Vo»»
+
+[options="header", cols=".^3,.^11,.^4"]
+|===
+|名称|说明|类型
+|**data** +
+__可选__|**样例** : `[ "<<_38c6c9fcd7c8f2ea8ca2be35c70728e5>>" ]`|< <<_38c6c9fcd7c8f2ea8ca2be35c70728e5,停车场出入统计Vo>> > array
+|**info** +
+__可选__|**样例** : `"string"`|string
+|**message** +
+__可选__|**样例** : `"string"`|string
+|**status** +
+__可选__|**样例** : `0`|integer (int32)
+|===
+
+
+[[_b7c90bfc18eded9604fc4db8cf555712]]
+=== DataResult«List«停车场利用率统计Vo»»
+
+[options="header", cols=".^3,.^11,.^4"]
+|===
+|名称|说明|类型
+|**data** +
+__可选__|**样例** : `[ "<<_36a4d0a4bd6276c47792ba33aa024f3d>>" ]`|< <<_36a4d0a4bd6276c47792ba33aa024f3d,停车场利用率统计Vo>> > array
+|**info** +
+__可选__|**样例** : `"string"`|string
+|**message** +
+__可选__|**样例** : `"string"`|string
+|**status** +
+__可选__|**样例** : `0`|integer (int32)
+|===
+
+
+[[_769471541b3b320428f744d146173937]]
+=== DataResult«List«指标分析Vo»»
+
+[options="header", cols=".^3,.^11,.^4"]
+|===
+|名称|说明|类型
+|**data** +
+__可选__|**样例** : `[ "<<_cd7987dffc7db5d1717b98b81c916e91>>" ]`|< <<_cd7987dffc7db5d1717b98b81c916e91,指标分析Vo>> > array
+|**info** +
+__可选__|**样例** : `"string"`|string
+|**message** +
+__可选__|**样例** : `"string"`|string
+|**status** +
+__可选__|**样例** : `0`|integer (int32)
+|===
+
+
+[[_0d902e8dc81f368f06d65609187ca4e7]]
+=== DataResult«List«最近7天异常抬竿数据汇总Vo»»
+
+[options="header", cols=".^3,.^11,.^4"]
+|===
+|名称|说明|类型
+|**data** +
+__可选__|**样例** : `[ "<<_c771edcda4c20f38deb043a29721e855>>" ]`|< <<_c771edcda4c20f38deb043a29721e855,最近7天异常抬竿数据汇总Vo>> > array
+|**info** +
+__可选__|**样例** : `"string"`|string
+|**message** +
+__可选__|**样例** : `"string"`|string
+|**status** +
+__可选__|**样例** : `0`|integer (int32)
+|===
+
+
+[[_1bd492ea8c13c888b8a9b3f18ee2ad35]]
+=== DataResult«List«最近一年异常抬竿Vo»»
+
+[options="header", cols=".^3,.^11,.^4"]
+|===
+|名称|说明|类型
+|**data** +
+__可选__|**样例** : `[ "<<_2353a2d16dbeebfe48f5e8612d2cafe3>>" ]`|< <<_2353a2d16dbeebfe48f5e8612d2cafe3,最近一年异常抬竿Vo>> > array
+|**info** +
+__可选__|**样例** : `"string"`|string
+|**message** +
+__可选__|**样例** : `"string"`|string
+|**status** +
+__可选__|**样例** : `0`|integer (int32)
+|===
+
+
+[[_5f096e1ee81548760ee06f942ffe2355]]
+=== DataResult«int»
+
+[options="header", cols=".^3,.^11,.^4"]
+|===
+|名称|说明|类型
+|**data** +
+__可选__|**样例** : `0`|integer (int32)
+|**info** +
+__可选__|**样例** : `"string"`|string
+|**message** +
+__可选__|**样例** : `"string"`|string
+|**status** +
+__可选__|**样例** : `0`|integer (int32)
+|===
+
+
+[[_5e3f4bf6c50a34cdc848c016286af76d]]
+=== DataResult«string»
+
+[options="header", cols=".^3,.^11,.^4"]
+|===
+|名称|说明|类型
+|**data** +
+__可选__|**样例** : `"string"`|string
+|**info** +
+__可选__|**样例** : `"string"`|string
+|**message** +
+__可选__|**样例** : `"string"`|string
+|**status** +
+__可选__|**样例** : `0`|integer (int32)
+|===
+
+
+[[_af5aeb5ee164f9dca96b64c3262588f4]]
+=== DataResult«人员流动入职离职人数Vo»
+
+[options="header", cols=".^3,.^11,.^4"]
+|===
+|名称|说明|类型
+|**data** +
+__可选__|**样例** : `"<<_974a13a8983f197912a85d00f1fa14d9>>"`|<<_974a13a8983f197912a85d00f1fa14d9,人员流动入职离职人数Vo>>
+|**info** +
+__可选__|**样例** : `"string"`|string
+|**message** +
+__可选__|**样例** : `"string"`|string
+|**status** +
+__可选__|**样例** : `0`|integer (int32)
+|===
+
+
+[[_d061745d1fe93cfc1c3a61f99bdfbece]]
+=== DataResult«人员费用同比和百分比Vo»
+
+[options="header", cols=".^3,.^11,.^4"]
+|===
+|名称|说明|类型
+|**data** +
+__可选__|**样例** : `"<<_66f1061080cab96f80f31bf4e6fd5db4>>"`|<<_66f1061080cab96f80f31bf4e6fd5db4,人员费用同比和百分比Vo>>
+|**info** +
+__可选__|**样例** : `"string"`|string
+|**message** +
+__可选__|**样例** : `"string"`|string
+|**status** +
+__可选__|**样例** : `0`|integer (int32)
+|===
+
+
+[[_d00041ad79d07e050951366b96152166]]
+=== DataResult«人数Vo»
+
+[options="header", cols=".^3,.^11,.^4"]
+|===
+|名称|说明|类型
+|**data** +
+__可选__|**样例** : `"<<_98b5546656fa8ada7ee6a208f556d6d4>>"`|<<_98b5546656fa8ada7ee6a208f556d6d4,人数Vo>>
+|**info** +
+__可选__|**样例** : `"string"`|string
+|**message** +
+__可选__|**样例** : `"string"`|string
+|**status** +
+__可选__|**样例** : `0`|integer (int32)
+|===
+
+
+[[_f7f565d94421d306a5bdc6357f0450bd]]
+=== DataResult«保臻Vo»
+
+[options="header", cols=".^3,.^11,.^4"]
+|===
+|名称|说明|类型
+|**data** +
+__可选__|**样例** : `"<<_c314e15c7d1f3270f005bbc3e628282d>>"`|<<_c314e15c7d1f3270f005bbc3e628282d,保臻Vo>>
+|**info** +
+__可选__|**样例** : `"string"`|string
+|**message** +
+__可选__|**样例** : `"string"`|string
+|**status** +
+__可选__|**样例** : `0`|integer (int32)
+|===
+
+
+[[_762e0f5813bdd5c9e7fe7d9f80c8d5e9]]
+=== DataResult«停车场收费情况汇总»
+
+[options="header", cols=".^3,.^11,.^4"]
+|===
+|名称|说明|类型
+|**data** +
+__可选__|**样例** : `"<<_d2f13263ac770c6ec34463b2ab4e7eb5>>"`|<<_d2f13263ac770c6ec34463b2ab4e7eb5,停车场收费情况汇总>>
+|**info** +
+__可选__|**样例** : `"string"`|string
+|**message** +
+__可选__|**样例** : `"string"`|string
+|**status** +
+__可选__|**样例** : `0`|integer (int32)
+|===
+
+
+[[_e139f4493b266863254eb97b8bd1b5fb]]
+=== DataResult«基础数据（单个或全部）Vo»
+
+[options="header", cols=".^3,.^11,.^4"]
+|===
+|名称|说明|类型
+|**data** +
+__可选__|**样例** : `"<<_97a7ce9e65edbe44ee4497d348717f5e>>"`|<<_97a7ce9e65edbe44ee4497d348717f5e,基础数据（单个或全部）Vo>>
+|**info** +
+__可选__|**样例** : `"string"`|string
+|**message** +
+__可选__|**样例** : `"string"`|string
+|**status** +
+__可选__|**样例** : `0`|integer (int32)
+|===
+
+
+[[_fb01ebf622fcd4f08e4c96048f617b81]]
+=== DataResult«所有项目汇总基础信息Vo»
+
+[options="header", cols=".^3,.^11,.^4"]
+|===
+|名称|说明|类型
+|**data** +
+__可选__|**样例** : `"<<_0e608975b7e5397465f7eb9ff74a1df8>>"`|<<_0e608975b7e5397465f7eb9ff74a1df8,所有项目汇总基础信息Vo>>
+|**info** +
+__可选__|**样例** : `"string"`|string
+|**message** +
+__可选__|**样例** : `"string"`|string
+|**status** +
+__可选__|**样例** : `0`|integer (int32)
+|===
+
+
+[[_mercouponbuy]]
+=== MerCouponBuy
+
+[options="header", cols=".^3,.^11,.^4"]
+|===
+|名称|说明|类型
+|**buyId** +
+__可选__|**样例** : `0`|integer (int32)
+|**buyNum** +
+__可选__|**样例** : `0`|integer (int32)
+|**buyTime** +
+__可选__|**样例** : `"string"`|string (date-time)
+|**couponType** +
+__可选__|**样例** : `"string"`|string
+|**createTime** +
+__可选__|**样例** : `"string"`|string (date-time)
+|**fee** +
+__可选__|**样例** : `0.0`|number (double)
+|**isDelete** +
+__可选__|**样例** : `0`|integer (int32)
+|**merchantName** +
+__可选__|**样例** : `"string"`|string
+|**operator** +
+__可选__|**样例** : `"string"`|string
+|**parkCode** +
+__可选__|**样例** : `"string"`|string
+|**source** +
+__可选__|**样例** : `"string"`|string
+|**totalFee** +
+__可选__|**样例** : `0.0`|number (double)
+|**updateTime** +
+__可选__|**样例** : `"string"`|string (date-time)
+|===
+
+
+[[_parkinfo]]
+=== ParkInfo
+
+[options="header", cols=".^3,.^11,.^4"]
+|===
+|名称|说明|类型
+|**createTime** +
+__可选__|**样例** : `"string"`|string (date-time)
+|**isDelete** +
+__可选__|**样例** : `0`|integer (int64)
+|**parkCode** +
+__可选__|**样例** : `"string"`|string
+|**parkId** +
+__可选__|**样例** : `0`|integer (int32)
+|**parkName** +
+__可选__|**样例** : `"string"`|string
+|**supplierCode** +
+__可选__|**样例** : `"string"`|string
+|**supplierName** +
+__可选__|**样例** : `"string"`|string
+|**updateTime** +
+__可选__|**样例** : `"string"`|string (date-time)
+|===
+
+
+[[_parkpay]]
+=== ParkPay
+
+[options="header", cols=".^3,.^11,.^4"]
+|===
+|名称|说明|类型
+|**carNumber** +
+__可选__|**样例** : `"string"`|string
+|**createTime** +
+__可选__|**样例** : `"string"`|string (date-time)
+|**freeMoney** +
+__可选__|**样例** : `0.0`|number (double)
+|**isDelete** +
+__可选__|**样例** : `0`|integer (int32)
+|**operator** +
+__可选__|**样例** : `"string"`|string
+|**outModel** +
+__可选__|**样例** : `"string"`|string
+|**outTime** +
+__可选__|**样例** : `"string"`|string (date-time)
+|**parkCode** +
+__可选__|**样例** : `"string"`|string
+|**payId** +
+__可选__|**样例** : `0`|integer (int32)
+|**remark** +
+__可选__|**样例** : `"string"`|string
+|**source** +
+__可选__|**样例** : `"string"`|string
+|**ssMoney** +
+__可选__|**样例** : `0.0`|number (double)
+|**stayTime** +
+__可选__|**样例** : `0`|integer (int32)
+|**updateTime** +
+__可选__|**样例** : `"string"`|string (date-time)
+|**yhMoney** +
+__可选__|**样例** : `0.0`|number (double)
+|**ysMoney** +
+__可选__|**样例** : `0.0`|number (double)
+|===
+
+
+[[_parkpubmodel]]
+=== ParkPubModel
+
+[options="header", cols=".^3,.^11,.^4"]
+|===
+|名称|说明|类型
+|**parkCodeList** +
+__可选__|**样例** : `[ "string" ]`|< string > array
+|===
+
+
+[[_parkpubmodelex]]
+=== ParkPubModelEx
+
+[options="header", cols=".^3,.^11,.^4"]
+|===
+|名称|说明|类型
+|**endTime** +
+__可选__|**样例** : `"string"`|string
+|**keyWord** +
+__可选__|**样例** : `"string"`|string
+|**parkCodeList** +
+__可选__|**样例** : `[ "string" ]`|< string > array
+|**startTime** +
+__可选__|**样例** : `"string"`|string
+|===
+
+
+[[_parkpubmodelex1]]
+=== ParkPubModelEx1
+
+[options="header", cols=".^3,.^11,.^4"]
+|===
+|名称|说明|类型
+|**cardId** +
+__可选__|**样例** : `"string"`|string
+|**endTime** +
+__可选__|**样例** : `"string"`|string
+|**keyWord** +
+__可选__|**样例** : `"string"`|string
+|**parkCodeList** +
+__可选__|**样例** : `[ "string" ]`|< string > array
+|**startTime** +
+__可选__|**样例** : `"string"`|string
+|===
+
+
+[[_projectsdata]]
+=== ProjectsData
+
+[options="header", cols=".^3,.^11,.^4"]
+|===
+|名称|说明|类型
+|**city** +
+__可选__|**样例** : `"string"`|string
+|**communityId** +
+__可选__|**样例** : `"string"`|string
+|**companyId** +
+__可选__|**样例** : `"string"`|string
+|**manageArea** +
+__可选__|**样例** : `"string"`|string
+|**managerId** +
+__可选__|**样例** : `"string"`|string
+|**name** +
+__可选__|**样例** : `"string"`|string
+|**parkId** +
+__可选__|**样例** : `"string"`|string
+|**residentNum** +
+__可选__|**样例** : `"string"`|string
+|**status** +
+__可选__|**样例** : `"string"`|string
+|**villagePhoto** +
+__可选__|**样例** : `"string"`|string
+|===
+
+
+[[_974a13a8983f197912a85d00f1fa14d9]]
+=== 人员流动入职离职人数Vo
+
+[options="header", cols=".^3,.^11,.^4"]
+|===
+|名称|说明|类型
+|**lizhi** +
+__可选__|离职数 +
+**样例** : `"string"`|string
+|**ruzhi** +
+__可选__|入职数 +
+**样例** : `"string"`|string
+|===
+
+
+[[_ef80361a059aa5b0e3e8387e32416a17]]
+=== 人员费用同比Vo
+
+[options="header", cols=".^3,.^11,.^4"]
+|===
+|名称|说明|类型
+|**centerCode** +
+__可选__|区域 +
+**样例** : `"string"`|string
+|**nian** +
+__可选__|年 +
+**样例** : `"string"`|string
+|**percentage** +
+__可选__|百分率 +
+**样例** : `0.0`|number (double)
+|===
+
+
+[[_66f1061080cab96f80f31bf4e6fd5db4]]
+=== 人员费用同比和百分比Vo
+
+[options="header", cols=".^3,.^11,.^4"]
+|===
+|名称|说明|类型
+|**list** +
+__可选__|人员费用同比Vo集合 +
+**样例** : `[ "<<_ef80361a059aa5b0e3e8387e32416a17>>" ]`|< <<_ef80361a059aa5b0e3e8387e32416a17,人员费用同比Vo>> > array
+|**percentage** +
+__可选__|百分比 +
+**样例** : `0.0`|number (double)
+|===
+
+
+[[_4c93d546813d419c0629b3d3bff89406]]
+=== 人员费用同比增长情况Vo
+
+[options="header", cols=".^3,.^11,.^4"]
+|===
+|名称|说明|类型
+|**category** +
+__可选__|职能类别 +
+**样例** : `"string"`|string
+|**value** +
+__可选__|职能类别 +
+**样例** : `0.0`|number (double)
+|===
+
+
+[[_98b5546656fa8ada7ee6a208f556d6d4]]
+=== 人数Vo
+
+[options="header", cols=".^3,.^11,.^4"]
+|===
+|名称|说明|类型
+|**entryJob** +
+__可选__|**样例** : `0`|integer (int32)
+|**leaveJob** +
+__可选__|**样例** : `0`|integer (int32)
+|**onJob** +
+__可选__|**样例** : `0`|integer (int32)
+|**outJob** +
+__可选__|**样例** : `0`|integer (int32)
+|===
+
+
+[[_c314e15c7d1f3270f005bbc3e628282d]]
+=== 保臻Vo
+
+[options="header", cols=".^3,.^11,.^4"]
+|===
+|名称|说明|类型
+|**data** +
+__可选__|保臻人数集合 +
+**样例** : `[ "<<_138249b9690505356ccea5f6ad11d51b>>" ]`|< <<_138249b9690505356ccea5f6ad11d51b,保臻人数Vo>> > array
+|**sum** +
+__可选__|总人数 +
+**样例** : `0`|integer (int32)
+|===
+
+
+[[_138249b9690505356ccea5f6ad11d51b]]
+=== 保臻人数Vo
+
+[options="header", cols=".^3,.^11,.^4"]
+|===
+|名称|说明|类型
+|**department** +
+__可选__|部门 +
+**样例** : `"string"`|string
+|**staff** +
+__可选__|人数 +
+**样例** : `"string"`|string
+|===
+
+
+[[_38c6c9fcd7c8f2ea8ca2be35c70728e5]]
+=== 停车场出入统计Vo
+
+[options="header", cols=".^3,.^11,.^4"]
+|===
+|名称|说明|类型
+|**dataHour** +
+__可选__|时间点 +
+**样例** : `"12"`|string
+|**inCount** +
+__可选__|进入数量 +
+**样例** : `6`|integer (int32)
+|**outCount** +
+__可选__|开出数量 +
+**样例** : `7`|integer (int32)
+|===
+
+
+[[_36a4d0a4bd6276c47792ba33aa024f3d]]
+=== 停车场利用率统计Vo
+
+[options="header", cols=".^3,.^11,.^4"]
+|===
+|名称|说明|类型
+|**dataHour** +
+__可选__|小时 +
+**样例** : `23`|integer (int32)
+|**usedProfit** +
+__可选__|停车场利用率 +
+**样例** : `80`|integer (int32)
+|===
+
+
+[[_d2f13263ac770c6ec34463b2ab4e7eb5]]
+=== 停车场收费情况汇总
+
+[options="header", cols=".^3,.^11,.^4"]
+|===
+|名称|说明|类型
+|**cashAmount** +
+__可选__|现金收款金额 +
+**样例** : `25000.0`|number (double)
+|**onlineAmount** +
+__可选__|线上收款金额 +
+**样例** : `20000.0`|number (double)
+|**ssAmount** +
+__可选__|实收金额 +
+**样例** : `45000.0`|number (double)
+|===
+
+
+[[_db2abf4799fb22dc0a612d97cd6ec993]]
+=== 告警分析Dto
+
+[options="header", cols=".^3,.^11,.^4"]
+|===
+|名称|说明|类型
+|**parkIds** +
+__可选__|车场id列表 +
+**样例** : `[ "string" ]`|< string > array
+|===
+
+
+[[_560f05821c60f2edc4b853c5379a4de5]]
+=== 告警分析请求RO
+
+[options="header", cols=".^3,.^11,.^4"]
+|===
+|名称|说明|类型
+|**managerId** +
+__可选__|用户ID +
+**样例** : `"string"`|string
+|**month** +
+__可选__|月份 +
+**样例** : `"string"`|string
+|**parkId** +
+__可选__|停车场ID +
+**样例** : `"string"`|string
+|===
+
+
+[[_97a7ce9e65edbe44ee4497d348717f5e]]
+=== 基础数据（单个或全部）Vo
+
+[options="header", cols=".^3,.^11,.^4"]
+|===
+|名称|说明|类型
+|**parkCardCount** +
+__可选__|月卡数量 +
+**样例** : `500`|integer (int32)
+|**parkNum** +
+__可选__|停车场数量 +
+**样例** : `20`|integer (int32)
+|**ssAmount** +
+__可选__|应收（元） +
+**样例** : `1500000.0`|number
+|**suppliers** +
+__可选__|供应商数量 +
+**样例** : `10`|integer (int32)
+|**totalLot** +
+__可选__|车位数量 +
+**样例** : `100`|integer (int32)
+|**ysAmount** +
+__可选__|应收（元） +
+**样例** : `1800000.0`|number
+|===
+
+
+[[_0e608975b7e5397465f7eb9ff74a1df8]]
+=== 所有项目汇总基础信息Vo
+
+[options="header", cols=".^3,.^11,.^4"]
+|===
+|名称|说明|类型
+|**manageArea** +
+__可选__|建筑面积 +
+**样例** : `204.0`|number
+|**parkIdList** +
+__可选__|停车场id列表 +
+**样例** : `[ "string" ]`|< string > array
+|**residentNum** +
+__可选__|户数 +
+**样例** : `100`|integer (int32)
+|**villageIDList** +
+__可选__|项目id列表 +
+**样例** : `[ "string" ]`|< string > array
+|**villageNum** +
+__可选__|管理项目数量 +
+**样例** : `20`|integer (int32)
+|===
+
+
+[[_cd7987dffc7db5d1717b98b81c916e91]]
+=== 指标分析Vo
+
+[options="header", cols=".^3,.^11,.^4"]
+|===
+|名称|说明|类型
+|**parkId** +
+__可选__|停车场id +
+**样例** : `"20170501165550463642067547810861"`|string
+|**parkName** +
+__可选__|停车场名称 +
+**样例** : `"国人通信大厦"`|string
+|**threshold** +
+__可选__|阀值 +
+**样例** : `"1"`|string
+|**type** +
+__可选__|指标类型(1为免费金额过高，2为现金缴费过高) +
+**样例** : `"1"`|string
+|**value** +
+__可选__|指标值 +
+**样例** : `1.0`|number (double)
+|===
+
+
+[[_c771edcda4c20f38deb043a29721e855]]
+=== 最近7天异常抬竿数据汇总Vo
+
+[options="header", cols=".^3,.^11,.^4"]
+|===
+|名称|说明|类型
+|**dataDay** +
+__可选__|日期 +
+**样例** : `"20190602"`|string
+|**errFreeAmount** +
+__可选__|免费放行金额 +
+**样例** : `100`|integer (int32)
+|**errFreeCnt** +
+__可选__|免费放行数量 +
+**样例** : `10`|integer (int32)
+|**errProfit** +
+__可选__|免费放行数量占比 +
+**样例** : `2`|integer (int32)
+|**freeProfit** +
+__可选__|免费放行占比 +
+**样例** : `2`|integer (int32)
+|**totalCnt** +
+__可选__|总放行数量 +
+**样例** : `200`|integer (int32)
+|**ysAmount** +
+__可选__|应收金额 +
+**样例** : `15000`|integer (int32)
+|===
+
+
+[[_2353a2d16dbeebfe48f5e8612d2cafe3]]
+=== 最近一年异常抬竿Vo
+
+[options="header", cols=".^3,.^11,.^4"]
+|===
+|名称|说明|类型
+|**dataDay** +
+__可选__|月份 +
+**样例** : `"201906"`|string
+|**errFreeAmount** +
+__可选__|免费放行金额 +
+**样例** : `100`|integer (int32)
+|**errFreeCnt** +
+__可选__|免费放行数量 +
+**样例** : `10`|integer (int32)
+|**errProfit** +
+__可选__|免费放行数量占比 +
+**样例** : `2`|integer (int32)
+|**freeProfit** +
+__可选__|免费放行占比 +
+**样例** : `2`|integer (int32)
+|**totalCnt** +
+__可选__|总放行数量 +
+**样例** : `200`|integer (int32)
+|**ysAmount** +
+__可选__|应收金额 +
+**样例** : `15000`|integer (int32)
+|===
+
+
+[[_5f65d7fd1fd177a22bdb7869f71148e7]]
+=== 查询项目基础数据Dto
+
+[options="header", cols=".^3,.^11,.^4"]
+|===
+|名称|说明|类型
+|**managerId** +
+__可选__|用户ID +
+**样例** : `"5146"`|string
+|**parkIdList** +
+__可选__|停车场ID列表 +
+**样例** : `[ "string" ]`|< string > array
+|===
+
+
+[[_5ef92ce0dc7449f261ebe35318c4ab76]]
+=== 职位人数Vo
+
+[options="header", cols=".^3,.^11,.^4"]
+|===
+|名称|说明|类型
+|**num** +
+__可选__|**样例** : `0`|integer (int32)
+|**postion** +
+__可选__|**样例** : `"string"`|string
+|===
+
+
+[[_a8ba1f7d21ee6785c2fdf20d5761fe0c]]
+=== 项目人员费用/主营业务同比
+
+[options="header", cols=".^3,.^11,.^4"]
+|===
+|名称|说明|类型
+|**nian** +
+__可选__|年 +
+**样例** : `"string"`|string
+|**percentage** +
+__可选__|人员费用 +
+**样例** : `"string"`|string
+|===
+
+
+[[_dc6db67d5842c26d0a9f82ff48762d2f]]
+=== 项目人员费用同比Vo
+
+[options="header", cols=".^3,.^11,.^4"]
+|===
+|名称|说明|类型
+|**expense** +
+__可选__|人员费用含外包 +
+**样例** : `"string"`|string
+|**increase** +
+__可选__|增长数 +
+**样例** : `0.0`|number (double)
+|**nian** +
+__可选__|年 +
+**样例** : `"string"`|string
+|===
+
+
+
+
+

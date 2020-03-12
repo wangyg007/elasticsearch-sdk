@@ -1,0 +1,14 @@
+spring:
+
+  application:
+    name: demo-elk
+#  data:
+#    elasticsearch:
+#      cluster-name: elasticsearch
+#      cluster-nodes: 192.168.140.128:9300
+
+elasticsearch:
+  ip: 192.168.140.128:9200
+  time_out: 30000
+  http_schema: http
+  address_length: 2
