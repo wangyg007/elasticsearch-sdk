@@ -1,2 +1,1 @@
-# elasticsearch-dao
-my defined elasticsearch dao 
+rest-high-level-java-api for elasticsearch
