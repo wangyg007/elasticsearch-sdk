@@ -3,8 +3,6 @@ package com.poly.demo.module.elastic.repository;
 import com.alibaba.fastjson.JSON;
 import com.poly.demo.core.utils.ElasticDoc;
 import com.poly.demo.core.utils.ElasticUtils;
-import javafx.beans.binding.When;
-import org.apache.lucene.util.QueryBuilder;
 import org.elasticsearch.action.DocWriteResponse;
 import org.elasticsearch.action.admin.indices.delete.DeleteIndexRequest;
 import org.elasticsearch.action.bulk.BulkRequest;
@@ -25,9 +23,7 @@ import org.elasticsearch.common.unit.Fuzziness;
 import org.elasticsearch.common.unit.TimeValue;
 import org.elasticsearch.common.xcontent.XContentBuilder;
 import org.elasticsearch.common.xcontent.XContentType;
-import org.elasticsearch.index.query.FuzzyQueryBuilder;
-import org.elasticsearch.index.query.MatchQueryBuilder;
-import org.elasticsearch.index.query.QueryBuilders;
+import org.elasticsearch.index.query.*;
 import org.elasticsearch.search.SearchHit;
 import org.elasticsearch.search.SearchHits;
 import org.elasticsearch.search.builder.SearchSourceBuilder;
@@ -44,15 +40,12 @@ import java.util.concurrent.TimeUnit;
  * @author wangyg
  * @time 11:23
  * @note
- * java rest-high-level-api
- * https://www.elastic.co/guide/en/elasticsearch/client/java-rest/7.6/java-rest-high-document-get.html
  *
  *
  * Elasticsearch(ES)有两种连接方式：transport、rest。
  * transport通过TCP方式访问ES(只支持java),rest方式通过http API 访问ES(没有语言限制)。
  * ES官方建议使用rest方式, transport 在7.0版本中不建议使用，在8.X的版本中废弃。
  * 7.x版本去除type,多个type反而减慢搜索的速度
- *
  *
  * 什么是 routing 参数?
  * 当索引一个文档的时候，文档会被存储在一个主分片上。在存储时一般都会有多个主分片。
@@ -62,6 +55,11 @@ import java.util.concurrent.TimeUnit;
  * number_of_primary_shards 是主分片数量
  * 所有的文档 API 都接受一个叫做 routing 的路由参数，通过这个参数我们可以自定义文档到分片的映射。
  * 一个自定义的路由参数可以用来确保所有相关的文档——例如所有属于同一个用户的文档——都被存储到同一个分片中。
+ *
+ * 参考:
+ * https://www.elastic.co/guide/en/elasticsearch/client/java-rest/7.6/java-rest-high-document-get.html
+ * https://www.cnblogs.com/shine_cn/p/6122576.html
+ *
  **/
 @Repository
 public class BaseElasticDao {
@@ -279,23 +277,22 @@ public class BaseElasticDao {
         }
     }
 
+
     /**
-     * 查询
+     * base search
      * @param index
-     * @param field
-     * @param pattern
      * @param clazz
      * @param <T>
      * @return
      */
-    public <T> List<T> search(String index,String field,String pattern,Class<T> clazz){
+    public <T> List<T> search(String index, QueryBuilder queryBuilder, Class<T> clazz){
         List<T> list=new ArrayList<>();
         try {
             SearchRequest request = new SearchRequest(index);
             SearchSourceBuilder sourceBuilder = new SearchSourceBuilder();
-//            FuzzyQueryBuilder queryBuilder = QueryBuilders.fuzzyQuery(field,pattern);
-            sourceBuilder.query(QueryBuilders.matchQuery(field,pattern));
-            sourceBuilder.size(10);
+            sourceBuilder.query(queryBuilder);
+            //返回数量
+            //sourceBuilder.size(10);
             sourceBuilder.timeout(new TimeValue(60, TimeUnit.SECONDS));
             request.source(sourceBuilder);
 
@@ -313,6 +310,202 @@ public class BaseElasticDao {
         }
 
     }
+
+    /**
+     * 分词精确查询
+     * @param index
+     * @param field
+     * @param pattern
+     * @param clazz
+     * @param <T>
+     * @return
+     */
+    public <T> List<T> searchTerm(String index,String field,String pattern,Class<T> clazz){
+        try {
+            TermQueryBuilder queryBuilder = QueryBuilders.termQuery(field, pattern);
+            return search(index,queryBuilder,clazz);
+        }catch (Exception e){
+            throw new RuntimeException(e);
+        }
+
+    }
+
+    /**
+     * 多个分词精确查询
+     * @param index
+     * @param field
+     * @param patterns
+     * @param clazz
+     * @param <T>
+     * @return
+     */
+    public <T> List<T> searchTerms(String index,String field,Class<T> clazz,String... patterns){
+        try {
+            TermsQueryBuilder queryBuilder = QueryBuilders.termsQuery(field, patterns);
+            return search(index,queryBuilder,clazz);
+        }catch (Exception e){
+            throw new RuntimeException(e);
+        }
+
+    }
+
+    /**
+     * 范围查找
+     * @param index
+     * @param field
+     * @param gt 下界
+     * @param lt 上届
+     * @param clazz
+     * @param <T>
+     * @return
+     */
+    public <T> List<T> searchRange(String index,String field,String gt,String lt,Class<T> clazz){
+        try {
+            RangeQueryBuilder queryBuilder = QueryBuilders.rangeQuery(field)
+                    .gt(gt)
+                    .lt(lt)
+                    .includeLower(true)
+                    .includeUpper(true);
+            return search(index,queryBuilder,clazz);
+        }catch (Exception e){
+            throw new RuntimeException(e);
+        }
+
+    }
+
+    /**
+     * exist query
+     * 查询字段不为null的文档
+     *
+     * missing query
+     * 返回 没有字段或值为null或没有值的文档
+     * java client 该方法已经标记为过时，推荐用exist代替 如下  existsQuery BoolQueryBuilder#mustNot(QueryBuilder)
+     * QueryBuilders.missingQuery("accountGuid")
+     * 等同
+     * QueryBuilders.boolQuery().mustNot(QueryBuilders.existsQuery("accountGuid"));
+     *
+     * @param index
+     * @param field
+     * @param clazz
+     * @param <T>
+     * @return
+     */
+    public <T> List<T> searchExist(String index,String field,Class<T> clazz){
+        try {
+            ExistsQueryBuilder queryBuilder = QueryBuilders.existsQuery(field);
+            return search(index,queryBuilder,clazz);
+        }catch (Exception e){
+            throw new RuntimeException(e);
+        }
+
+    }
+
+
+    /**
+     * 模糊查询
+     * fuzziness
+     * 定义最大的编辑距离，默认为AUTO，即按照es的默认配置。
+     * fuzziness可选的值为0,1,2，也就是说编辑距离最大只能设置为2.
+     * AUTO策略：
+     * 在AUTO模式下，es将根据输入查询的term的长度决定编辑距离大小。用户也可以自定义term长度边界的最大和最小值，AUTO:[low],[high]，如果没有定义的话，默认值为3和6，即等价于 AUTO:3,6，即按照以下方案：
+     *
+     * 输入查询term的长度：
+     * 0-2：必须精确匹配
+     * 3-5：编辑距离为1
+     * >5：编辑距离为2
+     *
+     * prefix_length	定义最初始不会被“模糊”的term的数量。这是基于用户的输入一般不会在最开始犯错误的设定的基础上设置的参数。这个参数的设定将减少去召回限定编辑距离的的term时，检索的term的数量。默认参数为0.
+     * max_expansions	定义fuzzy query会扩展的最大term的数量。默认为50.
+     * transpositions	定义在计算编辑聚利时，是否允许term的交换（例如ab->ba）,实际上，如果设置为true的话，计算的就是Damerau,F,J distance。默认参数为false。
+     * ————————————————
+     * @param index
+     * @param field
+     * @param pattern
+     * @param clazz
+     * @param <T>
+     * @return
+     */
+    public <T> List<T> searchFuzz(String index,String field,String pattern,Class<T> clazz){
+        try {
+            FuzzyQueryBuilder queryBuilder = QueryBuilders.fuzzyQuery(field, pattern)
+                    .fuzziness(Fuzziness.AUTO);
+            return search(index,queryBuilder,clazz);
+        }catch (Exception e){
+            throw new RuntimeException(e);
+        }
+    }
+
+    /**
+     * 前缀查询，匹配分词前缀 如果字段没分词，就匹配整个字段前缀
+     * @param index
+     * @param field
+     * @param pattern
+     * @param clazz
+     * @param <T>
+     * @return
+     */
+    public <T> List<T> searchPrefix(String index,String field,String pattern,Class<T> clazz){
+        try {
+            PrefixQueryBuilder queryBuilder = QueryBuilders.prefixQuery(field, pattern);
+            return search(index,queryBuilder,clazz);
+        }catch (Exception e){
+            throw new RuntimeException(e);
+        }
+    }
+
+    /**
+     * 通配符查询,支持* 任意字符串；？任意一个字符
+     * @param index
+     * @param field
+     * @param pattern
+     * @param clazz
+     * @param <T>
+     * @return
+     */
+    public <T> List<T> searchWildcard(String index,String field,String pattern,Class<T> clazz){
+        try {
+            WildcardQueryBuilder queryBuilder = QueryBuilders.wildcardQuery(field, pattern);
+            return search(index,queryBuilder,clazz);
+        }catch (Exception e){
+            throw new RuntimeException(e);
+        }
+    }
+
+    /**
+     * 正则匹配查询
+     * @param index
+     * @param field
+     * @param pattern 正则表达式
+     * @param clazz
+     * @param <T>
+     * @return
+     */
+    public <T> List<T> searchRegexp(String index,String field,String pattern,Class<T> clazz){
+        try {
+            RegexpQueryBuilder queryBuilder = QueryBuilders.regexpQuery(field, pattern);
+            return search(index,queryBuilder,clazz);
+        }catch (Exception e){
+            throw new RuntimeException(e);
+        }
+    }
+
+    /**
+     * 根据ids查询
+     * @param index
+     * @param clazz
+     * @param ids
+     * @param <T>
+     * @return
+     */
+    public <T> List<T> searchIds(String index,Class<T> clazz,String... ids){
+        try {
+            IdsQueryBuilder queryBuilder = QueryBuilders.idsQuery().addIds(ids);
+            return search(index,queryBuilder,clazz);
+        }catch (Exception e){
+            throw new RuntimeException(e);
+        }
+    }
+
 
 
 

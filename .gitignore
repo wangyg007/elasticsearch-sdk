@@ -28,3 +28,7 @@ HELP.md
 
 ### VS Code ###
 .vscode/
+src/main/java/com/poly/demo/module/elastic/controller/
+src/main/java/com/poly/demo/module/elastic/service/
+src/main/resources/static/
+src/main/resources/templates/
